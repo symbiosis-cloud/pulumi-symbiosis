@@ -53,6 +53,7 @@ namespace Kuraudo.Symbiosis
         {
             var dst = src ?? new global::Pulumi.InvokeOptions{};
             dst.Version = src?.Version ?? Version;
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/kuraudo-io/pulumi-symbiosis/releases/";
             return dst;
         }
 

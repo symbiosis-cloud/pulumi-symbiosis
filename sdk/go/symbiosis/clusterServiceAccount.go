@@ -59,6 +59,7 @@ func NewClusterServiceAccount(ctx *pulumi.Context,
 	if args.ClusterName == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterName'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource ClusterServiceAccount
 	err := ctx.RegisterResource("symbiosis:index/clusterServiceAccount:ClusterServiceAccount", name, args, &resource, opts...)
 	if err != nil {

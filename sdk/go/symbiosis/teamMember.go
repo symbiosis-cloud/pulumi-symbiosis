@@ -63,6 +63,7 @@ func NewTeamMember(ctx *pulumi.Context,
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource TeamMember
 	err := ctx.RegisterResource("symbiosis:index/teamMember:TeamMember", name, args, &resource, opts...)
 	if err != nil {

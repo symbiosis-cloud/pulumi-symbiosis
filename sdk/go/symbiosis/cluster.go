@@ -65,6 +65,7 @@ func NewCluster(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource Cluster
 	err := ctx.RegisterResource("symbiosis:index/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {

@@ -79,6 +79,7 @@ func NewNodePool(ctx *pulumi.Context,
 	if args.Quantity == nil {
 		return nil, errors.New("invalid value for required argument 'Quantity'")
 	}
+	opts = pkgResourceDefaultOpts(opts)
 	var resource NodePool
 	err := ctx.RegisterResource("symbiosis:index/nodePool:NodePool", name, args, &resource, opts...)
 	if err != nil {

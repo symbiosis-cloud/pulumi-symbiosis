@@ -19,25 +19,22 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/kuraudo-io/pulumi-symbiosis/sdk/go/symbiosis"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/kuraudo-io/pulumi-symbiosis/sdk/go/symbiosis"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := symbiosis.NewTeamMember(ctx, "example", &symbiosis.TeamMemberArgs{
-//				Email: pulumi.String("my-user@email.com"),
-//				Role:  pulumi.String("MEMBER"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := symbiosis.NewTeamMember(ctx, "example", &symbiosis.TeamMemberArgs{
+// 			Email: pulumi.String("my-user@email.com"),
+// 			Role:  pulumi.String("MEMBER"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 type TeamMember struct {
 	pulumi.CustomResourceState
@@ -148,7 +145,7 @@ func (i *TeamMember) ToTeamMemberOutputWithContext(ctx context.Context) TeamMemb
 // TeamMemberArrayInput is an input type that accepts TeamMemberArray and TeamMemberArrayOutput values.
 // You can construct a concrete instance of `TeamMemberArrayInput` via:
 //
-//	TeamMemberArray{ TeamMemberArgs{...} }
+//          TeamMemberArray{ TeamMemberArgs{...} }
 type TeamMemberArrayInput interface {
 	pulumi.Input
 
@@ -173,7 +170,7 @@ func (i TeamMemberArray) ToTeamMemberArrayOutputWithContext(ctx context.Context)
 // TeamMemberMapInput is an input type that accepts TeamMemberMap and TeamMemberMapOutput values.
 // You can construct a concrete instance of `TeamMemberMapInput` via:
 //
-//	TeamMemberMap{ "key": TeamMemberArgs{...} }
+//          TeamMemberMap{ "key": TeamMemberArgs{...} }
 type TeamMemberMapInput interface {
 	pulumi.Input
 

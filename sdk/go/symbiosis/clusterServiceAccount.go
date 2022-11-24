@@ -19,24 +19,21 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/kuraudo-io/pulumi-symbiosis/sdk/go/symbiosis"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/kuraudo-io/pulumi-symbiosis/sdk/go/symbiosis"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := symbiosis.NewClusterServiceAccount(ctx, "example", &symbiosis.ClusterServiceAccountArgs{
-//				ClusterName: pulumi.Any(symbiosis_cluster.Example.Name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := symbiosis.NewClusterServiceAccount(ctx, "example", &symbiosis.ClusterServiceAccountArgs{
+// 			ClusterName: pulumi.Any(symbiosis_cluster.Example.Name),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 type ClusterServiceAccount struct {
 	pulumi.CustomResourceState
@@ -140,7 +137,7 @@ func (i *ClusterServiceAccount) ToClusterServiceAccountOutputWithContext(ctx con
 // ClusterServiceAccountArrayInput is an input type that accepts ClusterServiceAccountArray and ClusterServiceAccountArrayOutput values.
 // You can construct a concrete instance of `ClusterServiceAccountArrayInput` via:
 //
-//	ClusterServiceAccountArray{ ClusterServiceAccountArgs{...} }
+//          ClusterServiceAccountArray{ ClusterServiceAccountArgs{...} }
 type ClusterServiceAccountArrayInput interface {
 	pulumi.Input
 
@@ -165,7 +162,7 @@ func (i ClusterServiceAccountArray) ToClusterServiceAccountArrayOutputWithContex
 // ClusterServiceAccountMapInput is an input type that accepts ClusterServiceAccountMap and ClusterServiceAccountMapOutput values.
 // You can construct a concrete instance of `ClusterServiceAccountMapInput` via:
 //
-//	ClusterServiceAccountMap{ "key": ClusterServiceAccountArgs{...} }
+//          ClusterServiceAccountMap{ "key": ClusterServiceAccountArgs{...} }
 type ClusterServiceAccountMapInput interface {
 	pulumi.Input
 

@@ -19,32 +19,29 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/kuraudo-io/pulumi-symbiosis/sdk/go/symbiosis"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/kuraudo-io/pulumi-symbiosis/sdk/go/symbiosis"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleCluster, err := symbiosis.NewCluster(ctx, "exampleCluster", &symbiosis.ClusterArgs{
-//				Region: pulumi.String("germany-1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = symbiosis.NewNodePool(ctx, "exampleNodePool", &symbiosis.NodePoolArgs{
-//				Cluster:  exampleCluster.Name,
-//				NodeType: pulumi.String("general-1"),
-//				Quantity: pulumi.Int(6),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleCluster, err := symbiosis.NewCluster(ctx, "exampleCluster", &symbiosis.ClusterArgs{
+// 			Region: pulumi.String("germany-1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = symbiosis.NewNodePool(ctx, "exampleNodePool", &symbiosis.NodePoolArgs{
+// 			Cluster:  exampleCluster.Name,
+// 			NodeType: pulumi.String("general-1"),
+// 			Quantity: pulumi.Int(6),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 type NodePool struct {
 	pulumi.CustomResourceState
@@ -192,7 +189,7 @@ func (i *NodePool) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutp
 // NodePoolArrayInput is an input type that accepts NodePoolArray and NodePoolArrayOutput values.
 // You can construct a concrete instance of `NodePoolArrayInput` via:
 //
-//	NodePoolArray{ NodePoolArgs{...} }
+//          NodePoolArray{ NodePoolArgs{...} }
 type NodePoolArrayInput interface {
 	pulumi.Input
 
@@ -217,7 +214,7 @@ func (i NodePoolArray) ToNodePoolArrayOutputWithContext(ctx context.Context) Nod
 // NodePoolMapInput is an input type that accepts NodePoolMap and NodePoolMapOutput values.
 // You can construct a concrete instance of `NodePoolMapInput` via:
 //
-//	NodePoolMap{ "key": NodePoolArgs{...} }
+//          NodePoolMap{ "key": NodePoolArgs{...} }
 type NodePoolMapInput interface {
 	pulumi.Input
 

@@ -21,6 +21,8 @@ github.com/kuraudo-io/pulumi-symbiosis v0.0.0-20221124212815-d106cdfb5d44 h1:TiX
 github.com/kuraudo-io/pulumi-symbiosis v0.0.0-20221124212815-d106cdfb5d44/go.mod h1:pV5hb4z/9jyzYBa4nxMLP5h9+QQVzzlPyXzvdxoYSow=
 github.com/kuraudo-io/pulumi-symbiosis/sdk v0.0.0-20221124212815-d106cdfb5d44 h1:R7ysoKnUDx3nvh01ZA4WnTJ43dlMMD/xo5ifJC8UYQI=
 github.com/kuraudo-io/pulumi-symbiosis/sdk v0.0.0-20221124212815-d106cdfb5d44/go.mod h1:SrJwkcaQC89CogB2gSKf2brPN1ITIh6SQomZYXVqWkU=
+github.com/kuraudo-io/pulumi-symbiosis/sdk v0.0.0-20221124213300-a49744b360f0 h1:olNDg2wF/M//bl/9TxREPFBxLbnw1akAd4Lixc+WLx4=
+github.com/kuraudo-io/pulumi-symbiosis/sdk v0.0.0-20221124213300-a49744b360f0/go.mod h1:SrJwkcaQC89CogB2gSKf2brPN1ITIh6SQomZYXVqWkU=
 github.com/mattn/go-runewidth v0.0.8 h1:3tS41NlGYSmhhe/8fhGRzc+z3AYCw1Fe1WAyLuujKs0=
 github.com/mitchellh/go-homedir v1.1.0 h1:lukF9ziXFxDFPkA1vsr5zpc1XuPDn/wFntq5mG+4E0Y=
 github.com/opentracing/basictracer-go v1.0.0 h1:YyUAhaEfjoWXclZVJ9sGoNct7j4TVk7lZWlQw5UXuoo=

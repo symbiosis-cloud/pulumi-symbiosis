@@ -1,6 +1,6 @@
-# Foo Resource Provider
+# Symbiosis Resource Provider
 
-The Foo Resource Provider lets you manage [Foo](http://example.com) resources.
+The Symbiosis Resource Provider lets you manage [Symbiosis](https://symbiosis.host) resources.
 
 ## Installing
 

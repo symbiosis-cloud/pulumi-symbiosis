@@ -1,0 +1,471 @@
+{
+    "name": "symbiosis",
+    "displayName": "Symbiosis",
+    "description": "A Pulumi package for creating and managing symbiosis cloud resources.",
+    "keywords": [
+        "pulumi",
+        "symbiosis",
+        "category/cloud"
+    ],
+    "homepage": "https://www.pulumi.com",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`symbiosis` Terraform Provider](https://github.com/symbiosis-cloud/terraform-provider-symbiosis).",
+    "repository": "https://github.com/kuraudo-io/pulumi-symbiosis",
+    "publisher": "Kuraudo.io",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "language": {
+        "csharp": {
+            "compatibility": "tfbridge20",
+            "namespaces": null,
+            "packageReferences": {
+                "Pulumi": "3.*"
+            }
+        },
+        "go": {
+            "generateExtraInputTypes": true,
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com/pulumi/pulumi-symbiosis/sdk/go/symbiosis"
+        },
+        "nodejs": {
+            "compatibility": "tfbridge20",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "disableUnionOutputTypes": true,
+            "packageDescription": "A Pulumi package for creating and managing symbiosis cloud resources.",
+            "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/symbiosis-cloud/terraform-provider-symbiosis)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-symbiosis` repo](https://github.com/kuraudo-io/pulumi-symbiosis/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-symbiosis` repo](https://github.com/symbiosis-cloud/terraform-provider-symbiosis/issues).",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "compatibility": "tfbridge20",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/symbiosis-cloud/terraform-provider-symbiosis)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-symbiosis` repo](https://github.com/kuraudo-io/pulumi-symbiosis/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-symbiosis` repo](https://github.com/symbiosis-cloud/terraform-provider-symbiosis/issues).",
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
+    },
+    "config": {
+        "variables": {
+            "apiKey": {
+                "type": "string",
+                "description": "The ApiKey used to authenticate requests towards Symbiosis.\n"
+            },
+            "endpoint": {
+                "type": "string",
+                "description": "Endpoint for reaching the symbiosis API. Used for debugging or when accessed through a proxy.\n"
+            }
+        },
+        "defaults": [
+            "apiKey"
+        ]
+    },
+    "types": {
+        "symbiosis:index/NodePoolTaint:NodePoolTaint": {
+            "properties": {
+                "effect": {
+                    "type": "string",
+                    "description": "Taint effect. Can be either NoSchedule, PreferNoSchedule or NoExecute. See: https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "key": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "effect",
+                "key",
+                "value"
+            ]
+        }
+    },
+    "provider": {
+        "description": "The provider type for the symbiosis package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "apiKey": {
+                "type": "string",
+                "description": "The ApiKey used to authenticate requests towards Symbiosis.\n"
+            },
+            "endpoint": {
+                "type": "string",
+                "description": "Endpoint for reaching the symbiosis API. Used for debugging or when accessed through a proxy.\n"
+            }
+        },
+        "required": [
+            "apiKey"
+        ],
+        "inputProperties": {
+            "apiKey": {
+                "type": "string",
+                "description": "The ApiKey used to authenticate requests towards Symbiosis.\n"
+            },
+            "endpoint": {
+                "type": "string",
+                "description": "Endpoint for reaching the symbiosis API. Used for debugging or when accessed through a proxy.\n"
+            }
+        },
+        "requiredInputs": [
+            "apiKey"
+        ]
+    },
+    "resources": {
+        "symbiosis:index/cluster:Cluster": {
+            "description": "Manages Kubernetes clusters.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as symbiosis from \"@pulumi/symbiosis\";\n\nconst example = new symbiosis.Cluster(\"example\", {region: \"germany-1\"});\n```\n```python\nimport pulumi\nimport pulumi_symbiosis as symbiosis\n\nexample = symbiosis.Cluster(\"example\", region=\"germany-1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Symbiosis = Pulumi.Symbiosis;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Symbiosis.Cluster(\"example\", new()\n    {\n        Region = \"germany-1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-symbiosis/sdk/go/symbiosis\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := symbiosis.NewCluster(ctx, \"example\", \u0026symbiosis.ClusterArgs{\n\t\t\tRegion: pulumi.String(\"germany-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.symbiosis.Cluster;\nimport com.pulumi.symbiosis.ClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Cluster(\"example\", ClusterArgs.builder()        \n            .region(\"germany-1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: symbiosis:Cluster\n    properties:\n      region: germany-1\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "caCertificate": {
+                    "type": "string"
+                },
+                "certificate": {
+                    "type": "string"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "Cluster API server endpoint\n"
+                },
+                "isHighlyAvailable": {
+                    "type": "boolean",
+                    "description": "When set to true it will deploy a highly available control plane with multiple replicas for redundancy.\n"
+                },
+                "kubeVersion": {
+                    "type": "string",
+                    "description": "Kubernetes version, see symbiosis.host for valid values or \"latest\" for the most recent supported version.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Cluster name. Changing the name forces re-creation.\n"
+                },
+                "privateKey": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "caCertificate",
+                "certificate",
+                "endpoint",
+                "name",
+                "privateKey",
+                "region"
+            ],
+            "inputProperties": {
+                "isHighlyAvailable": {
+                    "type": "boolean",
+                    "description": "When set to true it will deploy a highly available control plane with multiple replicas for redundancy.\n",
+                    "willReplaceOnChanges": true
+                },
+                "kubeVersion": {
+                    "type": "string",
+                    "description": "Kubernetes version, see symbiosis.host for valid values or \"latest\" for the most recent supported version.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Cluster name. Changing the name forces re-creation.\n",
+                    "willReplaceOnChanges": true
+                },
+                "region": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "region"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Cluster resources.\n",
+                "properties": {
+                    "caCertificate": {
+                        "type": "string"
+                    },
+                    "certificate": {
+                        "type": "string"
+                    },
+                    "endpoint": {
+                        "type": "string",
+                        "description": "Cluster API server endpoint\n"
+                    },
+                    "isHighlyAvailable": {
+                        "type": "boolean",
+                        "description": "When set to true it will deploy a highly available control plane with multiple replicas for redundancy.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "kubeVersion": {
+                        "type": "string",
+                        "description": "Kubernetes version, see symbiosis.host for valid values or \"latest\" for the most recent supported version.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Cluster name. Changing the name forces re-creation.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "privateKey": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "symbiosis:index/clusterServiceAccount:ClusterServiceAccount": {
+            "description": "Manages Kubernetes clusters service accounts.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as symbiosis from \"@pulumi/symbiosis\";\n\nconst example = new symbiosis.ClusterServiceAccount(\"example\", {clusterName: symbiosis_cluster.example.name});\n```\n```python\nimport pulumi\nimport pulumi_symbiosis as symbiosis\n\nexample = symbiosis.ClusterServiceAccount(\"example\", cluster_name=symbiosis_cluster[\"example\"][\"name\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Symbiosis = Pulumi.Symbiosis;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Symbiosis.ClusterServiceAccount(\"example\", new()\n    {\n        ClusterName = symbiosis_cluster.Example.Name,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-symbiosis/sdk/go/symbiosis\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := symbiosis.NewClusterServiceAccount(ctx, \"example\", \u0026symbiosis.ClusterServiceAccountArgs{\n\t\t\tClusterName: pulumi.Any(symbiosis_cluster.Example.Name),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.symbiosis.ClusterServiceAccount;\nimport com.pulumi.symbiosis.ClusterServiceAccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new ClusterServiceAccount(\"example\", ClusterServiceAccountArgs.builder()        \n            .clusterName(symbiosis_cluster.example().name())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: symbiosis:ClusterServiceAccount\n    properties:\n      clusterName: ${symbiosis_cluster.example.name}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "clusterCaCertificate": {
+                    "type": "string",
+                    "description": "Cluster CA certificate\n"
+                },
+                "clusterName": {
+                    "type": "string",
+                    "description": "Cluster name. Changing the name forces re-creation.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "Service account token\n"
+                }
+            },
+            "required": [
+                "clusterCaCertificate",
+                "clusterName",
+                "token"
+            ],
+            "inputProperties": {
+                "clusterName": {
+                    "type": "string",
+                    "description": "Cluster name. Changing the name forces re-creation.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "clusterName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ClusterServiceAccount resources.\n",
+                "properties": {
+                    "clusterCaCertificate": {
+                        "type": "string",
+                        "description": "Cluster CA certificate\n"
+                    },
+                    "clusterName": {
+                        "type": "string",
+                        "description": "Cluster name. Changing the name forces re-creation.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "Service account token\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "symbiosis:index/nodePool:NodePool": {
+            "description": "Creates node pools for Kubernetes clusters in Symbiosis.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as symbiosis from \"@pulumi/symbiosis\";\n\nconst exampleCluster = new symbiosis.Cluster(\"exampleCluster\", {region: \"germany-1\"});\nconst exampleNodePool = new symbiosis.NodePool(\"exampleNodePool\", {\n    cluster: exampleCluster.name,\n    nodeType: \"general-1\",\n    quantity: 6,\n});\n```\n```python\nimport pulumi\nimport pulumi_symbiosis as symbiosis\n\nexample_cluster = symbiosis.Cluster(\"exampleCluster\", region=\"germany-1\")\nexample_node_pool = symbiosis.NodePool(\"exampleNodePool\",\n    cluster=example_cluster.name,\n    node_type=\"general-1\",\n    quantity=6)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Symbiosis = Pulumi.Symbiosis;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleCluster = new Symbiosis.Cluster(\"exampleCluster\", new()\n    {\n        Region = \"germany-1\",\n    });\n\n    var exampleNodePool = new Symbiosis.NodePool(\"exampleNodePool\", new()\n    {\n        Cluster = exampleCluster.Name,\n        NodeType = \"general-1\",\n        Quantity = 6,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-symbiosis/sdk/go/symbiosis\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleCluster, err := symbiosis.NewCluster(ctx, \"exampleCluster\", \u0026symbiosis.ClusterArgs{\n\t\t\tRegion: pulumi.String(\"germany-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = symbiosis.NewNodePool(ctx, \"exampleNodePool\", \u0026symbiosis.NodePoolArgs{\n\t\t\tCluster:  exampleCluster.Name,\n\t\t\tNodeType: pulumi.String(\"general-1\"),\n\t\t\tQuantity: pulumi.Int(6),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.symbiosis.Cluster;\nimport com.pulumi.symbiosis.ClusterArgs;\nimport com.pulumi.symbiosis.NodePool;\nimport com.pulumi.symbiosis.NodePoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleCluster = new Cluster(\"exampleCluster\", ClusterArgs.builder()        \n            .region(\"germany-1\")\n            .build());\n\n        var exampleNodePool = new NodePool(\"exampleNodePool\", NodePoolArgs.builder()        \n            .cluster(exampleCluster.name())\n            .nodeType(\"general-1\")\n            .quantity(6)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleCluster:\n    type: symbiosis:Cluster\n    properties:\n      region: germany-1\n  exampleNodePool:\n    type: symbiosis:NodePool\n    properties:\n      cluster: ${exampleCluster.name}\n      nodeType: general-1\n      quantity: 6\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "cluster": {
+                    "type": "string",
+                    "description": "Name of cluster to create node pool in.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Node labels to be applied to the nodes\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of node pool\n"
+                },
+                "nodeType": {
+                    "type": "string",
+                    "description": "Type of nodes for this specific pool, see docs.\n"
+                },
+                "quantity": {
+                    "type": "integer",
+                    "description": "Desired number of nodes for specific pool.\n"
+                },
+                "taints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/symbiosis:index/NodePoolTaint:NodePoolTaint"
+                    },
+                    "description": "Node taints to be applied to the nodes\n"
+                }
+            },
+            "required": [
+                "cluster",
+                "name",
+                "nodeType",
+                "quantity"
+            ],
+            "inputProperties": {
+                "cluster": {
+                    "type": "string",
+                    "description": "Name of cluster to create node pool in.\n",
+                    "willReplaceOnChanges": true
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Node labels to be applied to the nodes\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of node pool\n",
+                    "willReplaceOnChanges": true
+                },
+                "nodeType": {
+                    "type": "string",
+                    "description": "Type of nodes for this specific pool, see docs.\n",
+                    "willReplaceOnChanges": true
+                },
+                "quantity": {
+                    "type": "integer",
+                    "description": "Desired number of nodes for specific pool.\n"
+                },
+                "taints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/symbiosis:index/NodePoolTaint:NodePoolTaint"
+                    },
+                    "description": "Node taints to be applied to the nodes\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "cluster",
+                "nodeType",
+                "quantity"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering NodePool resources.\n",
+                "properties": {
+                    "cluster": {
+                        "type": "string",
+                        "description": "Name of cluster to create node pool in.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Node labels to be applied to the nodes\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of node pool\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "nodeType": {
+                        "type": "string",
+                        "description": "Type of nodes for this specific pool, see docs.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "quantity": {
+                        "type": "integer",
+                        "description": "Desired number of nodes for specific pool.\n"
+                    },
+                    "taints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/symbiosis:index/NodePoolTaint:NodePoolTaint"
+                        },
+                        "description": "Node taints to be applied to the nodes\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "symbiosis:index/teamMember:TeamMember": {
+            "description": "Manages team membership and invitations.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as symbiosis from \"@pulumi/symbiosis\";\n\nconst example = new symbiosis.TeamMember(\"example\", {\n    email: \"my-user@email.com\",\n    role: \"MEMBER\",\n});\n```\n```python\nimport pulumi\nimport pulumi_symbiosis as symbiosis\n\nexample = symbiosis.TeamMember(\"example\",\n    email=\"my-user@email.com\",\n    role=\"MEMBER\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Symbiosis = Pulumi.Symbiosis;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Symbiosis.TeamMember(\"example\", new()\n    {\n        Email = \"my-user@email.com\",\n        Role = \"MEMBER\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-symbiosis/sdk/go/symbiosis\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := symbiosis.NewTeamMember(ctx, \"example\", \u0026symbiosis.TeamMemberArgs{\n\t\t\tEmail: pulumi.String(\"my-user@email.com\"),\n\t\t\tRole:  pulumi.String(\"MEMBER\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.symbiosis.TeamMember;\nimport com.pulumi.symbiosis.TeamMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new TeamMember(\"example\", TeamMemberArgs.builder()        \n            .email(\"my-user@email.com\")\n            .role(\"MEMBER\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: symbiosis:TeamMember\n    properties:\n      email: my-user@email.com\n      role: MEMBER\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "acceptedInvitation": {
+                    "type": "string",
+                    "description": "Whether the user has accepted the invitation to the team.\n"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "User email to invite. Adding an team member will send the user an invitation. Deleting a team member will either delete the invitation or the user depending on whether the user has accepted the invitation.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "User role. Valid values include [MEMBER, ADMIN].\n"
+                }
+            },
+            "required": [
+                "acceptedInvitation",
+                "email",
+                "role"
+            ],
+            "inputProperties": {
+                "email": {
+                    "type": "string",
+                    "description": "User email to invite. Adding an team member will send the user an invitation. Deleting a team member will either delete the invitation or the user depending on whether the user has accepted the invitation.\n",
+                    "willReplaceOnChanges": true
+                },
+                "role": {
+                    "type": "string",
+                    "description": "User role. Valid values include [MEMBER, ADMIN].\n"
+                }
+            },
+            "requiredInputs": [
+                "email",
+                "role"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TeamMember resources.\n",
+                "properties": {
+                    "acceptedInvitation": {
+                        "type": "string",
+                        "description": "Whether the user has accepted the invitation to the team.\n"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "User email to invite. Adding an team member will send the user an invitation. Deleting a team member will either delete the invitation or the user depending on whether the user has accepted the invitation.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "User role. Valid values include [MEMBER, ADMIN].\n"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

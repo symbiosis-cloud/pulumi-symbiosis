@@ -1,6 +1,8 @@
 ARG UBUNTU_VERSION=latest
 FROM ubuntu:${UBUNTU_VERSION}
 
+RUN useradd -ms /bin/bash hayden -u 1000
+
 # Update apt-get and install various needed utilities
 RUN apt-get update && \
     apt-get install -y curl && \
@@ -20,12 +22,13 @@ RUN rm -rf /usr/local/go && \
     tar -C /usr/local -xzf ${GO_VERSION}.tar.gz && \
     rm ${GO_VERSION}.tar.gz 
 
-ENV GOPATH=/root/go
+ENV GOPATH=/home/hayden/go
 ENV PATH=$PATH:/usr/local/go/bin
 
 # Install go linter
 RUN mkdir -p $GOPATH/bin && \
-    curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $GOPATH/bin v1.46.2
+    curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $GOPATH/bin v1.46.2 && \
+    chown -R hayden:hayden $GOPATH
 
 ENV PATH=$PATH:$GOPATH/bin
 
@@ -54,15 +57,13 @@ RUN apt-get install -y python3 && \
     apt-get install -y python3-setuptools
 
 # Install .NET
-RUN wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
-    dpkg -i packages-microsoft-prod.deb && \
-    rm packages-microsoft-prod.deb
-
 RUN apt-get update && \
     apt-get install -y apt-transport-https && \
     apt-get update && \
     apt-get install -y dotnet-sdk-6.0
 
 # Install Pulumi
-RUN curl -fsSL https://get.pulumi.com | sh
-ENV PATH=$PATH:/root/.pulumi/bin
+RUN curl -fsSL https://get.pulumi.com | sh && mv /root/.pulumi /home/hayden/ && chown -R hayden:hayden /home/hayden/.pulumi
+ENV PATH=$PATH:/home/hayden/.pulumi/bin
+
+USER hayden

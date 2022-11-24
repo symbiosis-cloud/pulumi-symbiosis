@@ -1,5 +1,5 @@
 {
-    "name": "@kuraudo/pulumi-symbiosis",
+    "name": "@kuraudo-io/pulumi-symbiosis",
     "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing symbiosis cloud resources.",
     "keywords": [
@@ -24,6 +24,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "symbiosis"
+        "name": "symbiosis",
+        "server": "https://github.com/kuraudo-io/pulumi-symbiosis/releases/"
     }
 }

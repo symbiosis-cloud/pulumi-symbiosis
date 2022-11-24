@@ -50,5 +50,5 @@ export function getVersion(): string {
 
 /** @internal */
 export function resourceOptsDefaults(): any {
-    return { version: getVersion() };
+    return { version: getVersion(), pluginDownloadURL: "https://github.com/kuraudo-io/pulumi-symbiosis/releases/" };
 }

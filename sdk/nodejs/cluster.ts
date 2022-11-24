@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as pulumi_symbiosis from "@kuraudo/pulumi-symbiosis";
+ * import * as pulumi_symbiosis from "@kuraudo-io/pulumi-symbiosis";
  *
  * const example = new symbiosis.Cluster("example", {region: "germany-1"});
  * ```

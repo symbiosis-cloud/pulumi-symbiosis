@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Symbiosis.Inputs
+namespace Kuraudo.Symbiosis.Inputs
 {
 
     public sealed class NodePoolTaintArgs : global::Pulumi.ResourceArgs

@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Symbiosis
+namespace Kuraudo.Symbiosis
 {
     /// <summary>
     /// Manages Kubernetes clusters.
@@ -17,7 +18,7 @@ namespace Pulumi.Symbiosis
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
-    /// using Symbiosis = Pulumi.Symbiosis;
+    /// using Symbiosis = Kuraudo.Symbiosis;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {

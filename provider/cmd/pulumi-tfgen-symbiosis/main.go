@@ -15,9 +15,9 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	symbiosis "github.com/kuraudo-io/pulumi-symbiosis/provider"
 	"github.com/kuraudo-io/pulumi-symbiosis/provider/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 )
 
 func main() {

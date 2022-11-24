@@ -69,7 +69,7 @@ func Provider() tfbridge.ProviderInfo {
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
-    PluginDownloadURL: "",
+		PluginDownloadURL: "",
 		Description:       "A Pulumi package for creating and managing symbiosis cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
@@ -92,11 +92,11 @@ func Provider() tfbridge.ProviderInfo {
 			// },
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
-      "symbiosis_cluster": { Tok: tfbridge.MakeResource(mainPkg, mainMod, "Cluster") },
-      "symbiosis_cluster_service_account": { Tok: tfbridge.MakeResource(mainPkg, mainMod, "ClusterServiceAccount") },
-      "symbiosis_node_pool": { Tok: tfbridge.MakeResource(mainPkg, mainMod, "NodePool") },
-      "symbiosis_team_member": { Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamMember") },
+		Resources: map[string]*tfbridge.ResourceInfo{
+			"symbiosis_cluster":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Cluster")},
+			"symbiosis_cluster_service_account": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ClusterServiceAccount")},
+			"symbiosis_node_pool":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "NodePool")},
+			"symbiosis_team_member":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamMember")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example

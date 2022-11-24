@@ -1,6 +1,6 @@
 PROJECT_NAME := symbiosis Package
 
-SHELL            := /usr/bin/env zsh
+SHELL            := /usr/bin/env bash
 PACK             := symbiosis
 ORG              := kuraudo-io
 PROJECT          := github.com/${ORG}/pulumi-${PACK}

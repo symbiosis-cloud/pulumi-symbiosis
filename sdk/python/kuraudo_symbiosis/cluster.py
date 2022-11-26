@@ -215,7 +215,7 @@ class Cluster(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_symbiosis as symbiosis
+        import kuraudo_symbiosis as symbiosis
 
         example = symbiosis.Cluster("example", region="germany-1")
         ```
@@ -239,7 +239,7 @@ class Cluster(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_symbiosis as symbiosis
+        import kuraudo_symbiosis as symbiosis
 
         example = symbiosis.Cluster("example", region="germany-1")
         ```

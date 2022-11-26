@@ -120,7 +120,7 @@ class TeamMember(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_symbiosis as symbiosis
+        import kuraudo_symbiosis as symbiosis
 
         example = symbiosis.TeamMember("example",
             email="my-user@email.com",
@@ -145,7 +145,7 @@ class TeamMember(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_symbiosis as symbiosis
+        import kuraudo_symbiosis as symbiosis
 
         example = symbiosis.TeamMember("example",
             email="my-user@email.com",

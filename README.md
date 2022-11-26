@@ -11,13 +11,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @kuraudo/symbiosis
+npm install @kuraudo-io/symbiosis
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @kuraudo/foo
+yarn add @kuraudo-io/foo
 ```
 
 ### Python
@@ -25,7 +25,7 @@ yarn add @kuraudo/foo
 To use from Python, install using `pip`:
 
 ```bash
-pip install pulumi_symbiosis
+pip install kuraudo_symbiosis
 ```
 
 ### Go

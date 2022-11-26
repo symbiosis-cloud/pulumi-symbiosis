@@ -1,5 +1,5 @@
 {
-    "name": "@kuraudo-io/pulumi-symbiosis",
+    "name": "@kuraudo-io/symbiosis",
     "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing symbiosis cloud resources.",
     "keywords": [

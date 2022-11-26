@@ -112,7 +112,7 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
-      PackageName: "@kuraudo-io/pulumi-symbiosis",
+      PackageName: "@kuraudo-io/symbiosis",
 			// See the documentation for tfbridge.OverlayInfo for how to lay out this
 			// section, or refer to the AWS provider. Delete this section if there are
 			// no overlay files.
@@ -120,6 +120,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges
+      PackageName: "kuraudo_symbiosis",
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
 			},

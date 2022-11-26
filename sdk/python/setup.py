@@ -37,7 +37,7 @@ def readme():
         return "symbiosis Pulumi Package - Development Version"
 
 
-setup(name='pulumi_symbiosis',
+setup(name='kuraudo_symbiosis',
       version=VERSION,
       description="A Pulumi package for creating and managing symbiosis cloud resources.",
       long_description=readme(),
@@ -53,7 +53,7 @@ setup(name='pulumi_symbiosis',
       license='Apache-2.0',
       packages=find_packages(),
       package_data={
-          'pulumi_symbiosis': [
+          'kuraudo_symbiosis': [
               'py.typed',
               'pulumi-plugin.json',
           ]

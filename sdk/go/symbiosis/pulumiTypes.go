@@ -20,7 +20,7 @@ type NodePoolTaint struct {
 // NodePoolTaintInput is an input type that accepts NodePoolTaintArgs and NodePoolTaintOutput values.
 // You can construct a concrete instance of `NodePoolTaintInput` via:
 //
-//          NodePoolTaintArgs{...}
+//	NodePoolTaintArgs{...}
 type NodePoolTaintInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i NodePoolTaintArgs) ToNodePoolTaintOutputWithContext(ctx context.Context)
 // NodePoolTaintArrayInput is an input type that accepts NodePoolTaintArray and NodePoolTaintArrayOutput values.
 // You can construct a concrete instance of `NodePoolTaintArrayInput` via:
 //
-//          NodePoolTaintArray{ NodePoolTaintArgs{...} }
+//	NodePoolTaintArray{ NodePoolTaintArgs{...} }
 type NodePoolTaintArrayInput interface {
 	pulumi.Input
 

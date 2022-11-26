@@ -102,7 +102,7 @@ jobs:
           python-version: ${{matrix.pythonversion}}
 
       - name: Build SDK
-        run: make build_${{ matrix.language }}_sdk
+        run: make build_${{ matrix.language }}
 
       - name: Check worktree clean
         run: |

@@ -11,7 +11,7 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`symbiosis` Terraform Provider](https://github.com/symbiosis-cloud/terraform-provider-symbiosis).",
     "repository": "https://github.com/kuraudo-io/pulumi-symbiosis",
-    "pluginDownloadURL": "https://github.com/kuraudo-io/pulumi-symbiosis/releases/",
+    "pluginDownloadURL": "github://api.github.com/kuraudo-io",
     "publisher": "Kuraudo.io",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"

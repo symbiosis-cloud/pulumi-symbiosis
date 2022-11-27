@@ -7,7 +7,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.28.1
 	github.com/pulumi/pulumi/sdk/v3 v3.48.0
-	github.com/symbiosis-cloud/terraform-provider-symbiosis v0.4.1
+	github.com/symbiosis-cloud/terraform-provider-symbiosis v0.5.0
 )
 
 require (
@@ -173,8 +173,8 @@ require (
 	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/cobra v1.4.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/stretchr/testify v1.7.2 // indirect
-	github.com/symbiosis-cloud/symbiosis-go v1.0.8 // indirect
+	github.com/stretchr/testify v1.8.0 // indirect
+	github.com/symbiosis-cloud/symbiosis-go v1.0.11 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
 	github.com/tweekmonster/luser v0.0.0-20161003172636-3fa38070dbd7 // indirect
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect

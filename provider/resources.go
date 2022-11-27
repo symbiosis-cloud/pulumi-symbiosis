@@ -52,35 +52,46 @@ func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
 		P:    p,
 		Name: "symbiosis",
+
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
 		DisplayName: "Symbiosis",
+
 		// The default publisher for all packages is Pulumi.
 		// Change this to your personal name (or a company name) that you
 		// would like to be shown in the Pulumi Registry if this package is published
 		// there.
 		Publisher: "Kuraudo.io",
+
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
 		// You may host a logo on a domain you control or add an SVG logo for your package
 		// in your repository and use the raw content URL for that file as your logo URL.
 		LogoURL: "",
+
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
-    PluginDownloadURL: "https://github.com/kuraudo-io/pulumi-symbiosis/releases/",
+    PluginDownloadURL: "github://api.github.com/kuraudo-io",
+
 		Description:       "A Pulumi package for creating and managing symbiosis cloud resources.",
+
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
 		Keywords:   []string{"pulumi", "symbiosis", "category/cloud"},
+
 		License:    "Apache-2.0",
+
 		Homepage:   "https://www.pulumi.com",
+
 		Repository: "https://github.com/kuraudo-io/pulumi-symbiosis",
+
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg: "symbiosis-cloud",
+
 		Config:    map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
@@ -91,18 +102,22 @@ func Provider() tfbridge.ProviderInfo {
 			// 	},
 			// },
 		},
+
 		PreConfigureCallback: preConfigureCallback,
+
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"symbiosis_cluster":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Cluster")},
 			"symbiosis_cluster_service_account": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ClusterServiceAccount")},
 			"symbiosis_node_pool":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "NodePool")},
 			"symbiosis_team_member":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamMember")},
 		},
+
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
 		},
+
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
@@ -113,11 +128,8 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/mime": "^2.0.0",
 			},
       PackageName: "@kuraudo-io/symbiosis",
-			// See the documentation for tfbridge.OverlayInfo for how to lay out this
-			// section, or refer to the AWS provider. Delete this section if there are
-			// no overlay files.
-			//Overlay: &tfbridge.OverlayInfo{},
 		},
+
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges
       PackageName: "kuraudo_symbiosis",
@@ -125,6 +137,7 @@ func Provider() tfbridge.ProviderInfo {
 				"pulumi": ">=3.0.0,<4.0.0",
 			},
 		},
+
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
 				fmt.Sprintf("github.com/kuraudo-io/pulumi-%[1]s/sdk/", mainPkg),
@@ -134,6 +147,7 @@ func Provider() tfbridge.ProviderInfo {
 			),
 			GenerateResourceContainerTypes: true,
 		},
+
 		CSharp: &tfbridge.CSharpInfo{
 			RootNamespace: "Kuraudo",
 			PackageReferences: map[string]string{

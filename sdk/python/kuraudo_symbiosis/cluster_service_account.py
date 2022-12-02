@@ -161,6 +161,8 @@ class ClusterServiceAccount(pulumi.CustomResource):
             __props__.__dict__["cluster_name"] = cluster_name
             __props__.__dict__["cluster_ca_certificate"] = None
             __props__.__dict__["token"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clusterCaCertificate", "token"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ClusterServiceAccount, __self__).__init__(
             'symbiosis:index/clusterServiceAccount:ClusterServiceAccount',
             resource_name,

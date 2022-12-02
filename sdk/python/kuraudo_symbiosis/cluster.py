@@ -282,6 +282,8 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["certificate"] = None
             __props__.__dict__["endpoint"] = None
             __props__.__dict__["private_key"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["caCertificate", "certificate", "privateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Cluster, __self__).__init__(
             'symbiosis:index/cluster:Cluster',
             resource_name,

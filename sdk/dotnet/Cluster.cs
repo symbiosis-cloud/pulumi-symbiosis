@@ -92,7 +92,13 @@ namespace Kuraudo.Symbiosis
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/kuraudo-io/pulumi-symbiosis/releases/",
+                PluginDownloadURL = "github://api.github.com/kuraudo-io",
+                AdditionalSecretOutputs =
+                {
+                    "caCertificate",
+                    "certificate",
+                    "privateKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -146,10 +152,28 @@ namespace Kuraudo.Symbiosis
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         [Input("caCertificate")]
-        public Input<string>? CaCertificate { get; set; }
+        private Input<string>? _caCertificate;
+        public Input<string>? CaCertificate
+        {
+            get => _caCertificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _caCertificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("certificate")]
-        public Input<string>? Certificate { get; set; }
+        private Input<string>? _certificate;
+        public Input<string>? Certificate
+        {
+            get => _certificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Cluster API server endpoint
@@ -176,7 +200,16 @@ namespace Kuraudo.Symbiosis
         public Input<string>? Name { get; set; }
 
         [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        private Input<string>? _privateKey;
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("region")]
         public Input<string>? Region { get; set; }

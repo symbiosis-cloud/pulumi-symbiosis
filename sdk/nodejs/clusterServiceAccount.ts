@@ -83,6 +83,8 @@ export class ClusterServiceAccount extends pulumi.CustomResource {
             resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["clusterCaCertificate", "token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ClusterServiceAccount.__pulumiType, name, resourceInputs, opts);
     }
 }

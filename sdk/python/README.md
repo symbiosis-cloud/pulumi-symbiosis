@@ -17,7 +17,7 @@ npm install @kuraudo-io/symbiosis
 or `yarn`:
 
 ```bash
-yarn add @kuraudo-io/foo
+yarn add @kuraudo-io/symbiosis
 ```
 
 ### Python

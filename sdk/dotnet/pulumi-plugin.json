@@ -1,5 +1,5 @@
 {
   "resource": true,
   "name": "symbiosis",
-  "server": "https://github.com/kuraudo-io/pulumi-symbiosis/releases/"
+  "server": "github://api.github.com/kuraudo-io"
 }

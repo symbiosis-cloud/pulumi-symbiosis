@@ -58,7 +58,8 @@
         "variables": {
             "apiKey": {
                 "type": "string",
-                "description": "The ApiKey used to authenticate requests towards Symbiosis.\n"
+                "description": "The ApiKey used to authenticate requests towards Symbiosis.\n",
+                "secret": true
             },
             "endpoint": {
                 "type": "string",
@@ -111,7 +112,8 @@
         "properties": {
             "apiKey": {
                 "type": "string",
-                "description": "The ApiKey used to authenticate requests towards Symbiosis.\n"
+                "description": "The ApiKey used to authenticate requests towards Symbiosis.\n",
+                "secret": true
             },
             "endpoint": {
                 "type": "string",
@@ -124,7 +126,8 @@
         "inputProperties": {
             "apiKey": {
                 "type": "string",
-                "description": "The ApiKey used to authenticate requests towards Symbiosis.\n"
+                "description": "The ApiKey used to authenticate requests towards Symbiosis.\n",
+                "secret": true
             },
             "endpoint": {
                 "type": "string",
@@ -140,10 +143,12 @@
             "description": "Manages Kubernetes clusters.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as symbiosis from \"@kuraudo-io/symbiosis\";\n\nconst example = new symbiosis.Cluster(\"example\", {region: \"germany-1\"});\n```\n```python\nimport pulumi\nimport kuraudo_symbiosis as symbiosis\n\nexample = symbiosis.Cluster(\"example\", region=\"germany-1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Symbiosis = Kuraudo.Symbiosis;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Symbiosis.Cluster(\"example\", new()\n    {\n        Region = \"germany-1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/kuraudo-io/pulumi-symbiosis/sdk/go/symbiosis\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := symbiosis.NewCluster(ctx, \"example\", \u0026symbiosis.ClusterArgs{\n\t\t\tRegion: pulumi.String(\"germany-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.symbiosis.Cluster;\nimport com.pulumi.symbiosis.ClusterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Cluster(\"example\", ClusterArgs.builder()        \n            .region(\"germany-1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: symbiosis:Cluster\n    properties:\n      region: germany-1\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "caCertificate": {
-                    "type": "string"
+                    "type": "string",
+                    "secret": true
                 },
                 "certificate": {
-                    "type": "string"
+                    "type": "string",
+                    "secret": true
                 },
                 "endpoint": {
                     "type": "string",
@@ -162,7 +167,8 @@
                     "description": "Cluster name. Changing the name forces re-creation.\n"
                 },
                 "privateKey": {
-                    "type": "string"
+                    "type": "string",
+                    "secret": true
                 },
                 "region": {
                     "type": "string"
@@ -204,10 +210,12 @@
                 "description": "Input properties used for looking up and filtering Cluster resources.\n",
                 "properties": {
                     "caCertificate": {
-                        "type": "string"
+                        "type": "string",
+                        "secret": true
                     },
                     "certificate": {
-                        "type": "string"
+                        "type": "string",
+                        "secret": true
                     },
                     "endpoint": {
                         "type": "string",
@@ -229,7 +237,8 @@
                         "willReplaceOnChanges": true
                     },
                     "privateKey": {
-                        "type": "string"
+                        "type": "string",
+                        "secret": true
                     },
                     "region": {
                         "type": "string",
@@ -244,7 +253,8 @@
             "properties": {
                 "clusterCaCertificate": {
                     "type": "string",
-                    "description": "Cluster CA certificate\n"
+                    "description": "Cluster CA certificate\n",
+                    "secret": true
                 },
                 "clusterName": {
                     "type": "string",
@@ -252,7 +262,8 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "Service account token\n"
+                    "description": "Service account token\n",
+                    "secret": true
                 }
             },
             "required": [
@@ -275,7 +286,8 @@
                 "properties": {
                     "clusterCaCertificate": {
                         "type": "string",
-                        "description": "Cluster CA certificate\n"
+                        "description": "Cluster CA certificate\n",
+                        "secret": true
                     },
                     "clusterName": {
                         "type": "string",
@@ -284,7 +296,8 @@
                     },
                     "token": {
                         "type": "string",
-                        "description": "Service account token\n"
+                        "description": "Service account token\n",
+                        "secret": true
                     }
                 },
                 "type": "object"
@@ -415,7 +428,7 @@
             }
         },
         "symbiosis:index/teamMember:TeamMember": {
-            "description": "Manages team membership and invitations.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as symbiosis from \"@pulumi/symbiosis\";\n\nconst example = new symbiosis.TeamMember(\"example\", {\n    email: \"my-user@email.com\",\n    role: \"MEMBER\",\n});\n```\n```python\nimport pulumi\nimport kuraudo_symbiosis as symbiosis\n\nexample = symbiosis.TeamMember(\"example\",\n    email=\"my-user@email.com\",\n    role=\"MEMBER\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Symbiosis = Kuraudo.Symbiosis;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Symbiosis.TeamMember(\"example\", new()\n    {\n        Email = \"my-user@email.com\",\n        Role = \"MEMBER\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/kuraudo-io/pulumi-symbiosis/sdk/go/symbiosis\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := symbiosis.NewTeamMember(ctx, \"example\", \u0026symbiosis.TeamMemberArgs{\n\t\t\tEmail: pulumi.String(\"my-user@email.com\"),\n\t\t\tRole:  pulumi.String(\"MEMBER\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.symbiosis.TeamMember;\nimport com.pulumi.symbiosis.TeamMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new TeamMember(\"example\", TeamMemberArgs.builder()        \n            .email(\"my-user@email.com\")\n            .role(\"MEMBER\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: symbiosis:TeamMember\n    properties:\n      email: my-user@email.com\n      role: MEMBER\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Manages team membership and invitations.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as symbiosis from \"@kuraudo-io/symbiosis\";\n\nconst example = new symbiosis.TeamMember(\"example\", {\n    email: \"my-user@email.com\",\n    role: \"MEMBER\",\n});\n```\n```python\nimport pulumi\nimport kuraudo_symbiosis as symbiosis\n\nexample = symbiosis.TeamMember(\"example\",\n    email=\"my-user@email.com\",\n    role=\"MEMBER\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Symbiosis = Kuraudo.Symbiosis;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Symbiosis.TeamMember(\"example\", new()\n    {\n        Email = \"my-user@email.com\",\n        Role = \"MEMBER\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/kuraudo-io/pulumi-symbiosis/sdk/go/symbiosis\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := symbiosis.NewTeamMember(ctx, \"example\", \u0026symbiosis.TeamMemberArgs{\n\t\t\tEmail: pulumi.String(\"my-user@email.com\"),\n\t\t\tRole:  pulumi.String(\"MEMBER\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.symbiosis.TeamMember;\nimport com.pulumi.symbiosis.TeamMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new TeamMember(\"example\", TeamMemberArgs.builder()        \n            .email(\"my-user@email.com\")\n            .role(\"MEMBER\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: symbiosis:TeamMember\n    properties:\n      email: my-user@email.com\n      role: MEMBER\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "acceptedInvitation": {
                     "type": "string",

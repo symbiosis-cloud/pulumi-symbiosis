@@ -74,7 +74,12 @@ namespace Kuraudo.Symbiosis
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "https://github.com/kuraudo-io/pulumi-symbiosis/releases/",
+                PluginDownloadURL = "github://api.github.com/kuraudo-io",
+                AdditionalSecretOutputs =
+                {
+                    "clusterCaCertificate",
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -112,11 +117,21 @@ namespace Kuraudo.Symbiosis
 
     public sealed class ClusterServiceAccountState : global::Pulumi.ResourceArgs
     {
+        [Input("clusterCaCertificate")]
+        private Input<string>? _clusterCaCertificate;
+
         /// <summary>
         /// Cluster CA certificate
         /// </summary>
-        [Input("clusterCaCertificate")]
-        public Input<string>? ClusterCaCertificate { get; set; }
+        public Input<string>? ClusterCaCertificate
+        {
+            get => _clusterCaCertificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clusterCaCertificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Cluster name. Changing the name forces re-creation.
@@ -124,11 +139,21 @@ namespace Kuraudo.Symbiosis
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// Service account token
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ClusterServiceAccountState()
         {

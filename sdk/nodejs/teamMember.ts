@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as symbiosis from "@pulumi/symbiosis";
+ * import * as symbiosis from "@kuraudo-io/symbiosis";
  *
  * const example = new symbiosis.TeamMember("example", {
  *     email: "my-user@email.com",

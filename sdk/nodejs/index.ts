@@ -5,11 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./cluster";
-export * from "./clusterServiceAccount";
-export * from "./nodePool";
-export * from "./provider";
-export * from "./teamMember";
+export { ClusterArgs, ClusterState } from "./cluster";
+export type Cluster = import("./cluster").Cluster;
+export const Cluster: typeof import("./cluster").Cluster = null as any;
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
+
+export { ClusterServiceAccountArgs, ClusterServiceAccountState } from "./clusterServiceAccount";
+export type ClusterServiceAccount = import("./clusterServiceAccount").ClusterServiceAccount;
+export const ClusterServiceAccount: typeof import("./clusterServiceAccount").ClusterServiceAccount = null as any;
+utilities.lazyLoad(exports, ["ClusterServiceAccount"], () => require("./clusterServiceAccount"));
+
+export { NodePoolArgs, NodePoolState } from "./nodePool";
+export type NodePool = import("./nodePool").NodePool;
+export const NodePool: typeof import("./nodePool").NodePool = null as any;
+utilities.lazyLoad(exports, ["NodePool"], () => require("./nodePool"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { TeamMemberArgs, TeamMemberState } from "./teamMember";
+export type TeamMember = import("./teamMember").TeamMember;
+export const TeamMember: typeof import("./teamMember").TeamMember = null as any;
+utilities.lazyLoad(exports, ["TeamMember"], () => require("./teamMember"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -19,12 +39,6 @@ export {
     config,
     types,
 };
-
-// Import resources to register:
-import { Cluster } from "./cluster";
-import { ClusterServiceAccount } from "./clusterServiceAccount";
-import { NodePool } from "./nodePool";
-import { TeamMember } from "./teamMember";
 
 const _module = {
     version: utilities.getVersion(),
@@ -47,9 +61,6 @@ pulumi.runtime.registerResourceModule("symbiosis", "index/cluster", _module)
 pulumi.runtime.registerResourceModule("symbiosis", "index/clusterServiceAccount", _module)
 pulumi.runtime.registerResourceModule("symbiosis", "index/nodePool", _module)
 pulumi.runtime.registerResourceModule("symbiosis", "index/teamMember", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("symbiosis", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

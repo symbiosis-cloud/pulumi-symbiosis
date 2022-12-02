@@ -50,5 +50,17 @@ export function getVersion(): string {
 
 /** @internal */
 export function resourceOptsDefaults(): any {
-    return { version: getVersion(), pluginDownloadURL: "https://github.com/kuraudo-io/pulumi-symbiosis/releases/" };
+    return { version: getVersion(), pluginDownloadURL: "github://api.github.com/kuraudo-io" };
+}
+
+/** @internal */
+export function lazyLoad(exports: any, props: string[], loadModule: any) {
+    for (let property of props) {
+        Object.defineProperty(exports, property, {
+            enumerable: true,
+            get: function() {
+                return loadModule()[property];
+            },
+        });
+    }
 }

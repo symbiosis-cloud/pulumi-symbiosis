@@ -15,7 +15,7 @@ class InstallPluginCommand(install):
     def run(self):
         install.run(self)
         try:
-            check_call(['pulumi', 'plugin', 'install', 'resource', 'symbiosis', PLUGIN_VERSION, '--server', 'https://github.com/kuraudo-io/pulumi-symbiosis/releases/'])
+            check_call(['pulumi', 'plugin', 'install', 'resource', 'symbiosis', PLUGIN_VERSION, '--server', 'github://api.github.com/kuraudo-io'])
         except OSError as error:
             if error.errno == errno.ENOENT:
                 print(f"""

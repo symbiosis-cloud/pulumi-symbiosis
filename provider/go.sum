@@ -846,6 +846,7 @@ github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+
 github.com/stretchr/objx v0.1.1/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.2.0 h1:Hbg2NidpLE8veEBkEZTL3CvlkUIVzuU9jDplZO54c48=
 github.com/stretchr/objx v0.2.0/go.mod h1:qt09Ya8vawLte6SNmTgCsAVtYtaKzEcn8ATUoHMkEqE=
+github.com/stretchr/objx v0.4.0/go.mod h1:YvHI0jy2hoMjB+UWwv71VJQ9isScKT/TqJzVSSt89Yw=
 github.com/stretchr/testify v1.2.1/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
@@ -856,10 +857,16 @@ github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/
 github.com/stretchr/testify v1.7.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/stretchr/testify v1.7.2 h1:4jaiDzPyXQvSd7D0EjG45355tLlV3VOECpq10pLC+8s=
 github.com/stretchr/testify v1.7.2/go.mod h1:R6va5+xMeoiuVRoj+gSkQ7d3FALtqAAGI1FQKckRals=
+github.com/stretchr/testify v1.8.0 h1:pSgiaMZlXftHpm5L7V1+rVB+AZJydKsMxsQBIJw4PKk=
+github.com/stretchr/testify v1.8.0/go.mod h1:yNjHg4UonilssWZ8iaSj1OCr/vHnekPRkoO+kdMU+MU=
 github.com/symbiosis-cloud/symbiosis-go v1.0.8 h1:ZHP7LNMGb/t6+Cb0xwXxnVpkzBxjDluu2rtsaFf4w5Q=
 github.com/symbiosis-cloud/symbiosis-go v1.0.8/go.mod h1:lhSbsfDioup2qFsrvUemxiUJLuP2hAE3q4umblBzWOo=
+github.com/symbiosis-cloud/symbiosis-go v1.0.11 h1:k3D6rKzSnUt4rWfTPdeayvOAzVqCPg5xQuYq9enUJfg=
+github.com/symbiosis-cloud/symbiosis-go v1.0.11/go.mod h1:NKZUsxo8/H1SnAxKo+RC/SHmUuaQILkdNAXN7LthjQ4=
 github.com/symbiosis-cloud/terraform-provider-symbiosis v0.4.1 h1:5Kwxqdy4YjDp2taTC2RabWx7vwIuLCM272FtMp/sI2s=
 github.com/symbiosis-cloud/terraform-provider-symbiosis v0.4.1/go.mod h1:FB53sVPJd6FqZw1Yyp/JAFuvlCE8AJYyj6bn1WT/1Us=
+github.com/symbiosis-cloud/terraform-provider-symbiosis v0.5.0 h1:ZJNmd3opy6qBUZ+priW/Ncqyv6L7O7i2zY1luU1cDF8=
+github.com/symbiosis-cloud/terraform-provider-symbiosis v0.5.0/go.mod h1:wziprpoHyvLpKytW82a72vkoZJBkOeQZ1DbY2C+gmB0=
 github.com/texttheater/golang-levenshtein v1.0.1 h1:+cRNoVrfiwufQPhoMzB6N0Yf/Mqajr6t1lOv8GyGE2U=
 github.com/texttheater/golang-levenshtein v1.0.1/go.mod h1:PYAKrbF5sAiq9wd+H82hs7gNaen0CplQ9uvm6+enD/8=
 github.com/tv42/httpunix v0.0.0-20150427012821-b75d8614f926/go.mod h1:9ESjWnEqriFuLhtthL60Sar/7RFoluCcXsuvEwTV5KM=

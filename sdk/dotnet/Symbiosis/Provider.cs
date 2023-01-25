@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace Kuraudo.Symbiosis
+namespace Symbiosis.Pulumi.Symbiosis
 {
     /// <summary>
     /// The provider type for the symbiosis package. By default, resources use package-wide configuration
@@ -49,7 +49,7 @@ namespace Kuraudo.Symbiosis
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "github://api.github.com/kuraudo-io",
+                PluginDownloadURL = "github://api.github.com/symbiosis-cloud",
                 AdditionalSecretOutputs =
                 {
                     "apiKey",

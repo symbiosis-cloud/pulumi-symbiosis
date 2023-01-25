@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace Kuraudo.Symbiosis
+namespace Symbiosis.Pulumi.Symbiosis
 {
     /// <summary>
     /// Manages team membership and invitations.
@@ -18,7 +18,7 @@ namespace Kuraudo.Symbiosis
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
-    /// using Symbiosis = Kuraudo.Symbiosis;
+    /// using Symbiosis = Symbiosis.Pulumi.Symbiosis;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -75,7 +75,7 @@ namespace Kuraudo.Symbiosis
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "github://api.github.com/kuraudo-io",
+                PluginDownloadURL = "github://api.github.com/symbiosis-cloud",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

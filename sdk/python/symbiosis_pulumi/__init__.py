@@ -15,10 +15,10 @@ from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import kuraudo_symbiosis.config as __config
+    import symbiosis_pulumi.config as __config
     config = __config
 else:
-    config = _utilities.lazy_import('kuraudo_symbiosis.config')
+    config = _utilities.lazy_import('symbiosis_pulumi.config')
 
 _utilities.register(
     resource_modules="""
@@ -26,7 +26,7 @@ _utilities.register(
  {
   "pkg": "symbiosis",
   "mod": "index/cluster",
-  "fqn": "kuraudo_symbiosis",
+  "fqn": "symbiosis_pulumi",
   "classes": {
    "symbiosis:index/cluster:Cluster": "Cluster"
   }
@@ -34,7 +34,7 @@ _utilities.register(
  {
   "pkg": "symbiosis",
   "mod": "index/clusterServiceAccount",
-  "fqn": "kuraudo_symbiosis",
+  "fqn": "symbiosis_pulumi",
   "classes": {
    "symbiosis:index/clusterServiceAccount:ClusterServiceAccount": "ClusterServiceAccount"
   }
@@ -42,7 +42,7 @@ _utilities.register(
  {
   "pkg": "symbiosis",
   "mod": "index/nodePool",
-  "fqn": "kuraudo_symbiosis",
+  "fqn": "symbiosis_pulumi",
   "classes": {
    "symbiosis:index/nodePool:NodePool": "NodePool"
   }
@@ -50,7 +50,7 @@ _utilities.register(
  {
   "pkg": "symbiosis",
   "mod": "index/teamMember",
-  "fqn": "kuraudo_symbiosis",
+  "fqn": "symbiosis_pulumi",
   "classes": {
    "symbiosis:index/teamMember:TeamMember": "TeamMember"
   }
@@ -62,7 +62,7 @@ _utilities.register(
  {
   "pkg": "symbiosis",
   "token": "pulumi:providers:symbiosis",
-  "fqn": "kuraudo_symbiosis",
+  "fqn": "symbiosis_pulumi",
   "class": "Provider"
  }
 ]

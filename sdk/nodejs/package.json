@@ -1,5 +1,5 @@
 {
-    "name": "@kuraudo-io/symbiosis",
+    "name": "@symbiosis-cloud/symbiosis-pulumi",
     "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing symbiosis cloud resources.",
     "keywords": [
@@ -8,7 +8,7 @@
         "category/cloud"
     ],
     "homepage": "https://www.pulumi.com",
-    "repository": "https://github.com/kuraudo-io/pulumi-symbiosis",
+    "repository": "https://github.com/symbiosis-cloud/pulumi-symbiosis",
     "license": "Apache-2.0",
     "scripts": {
         "build": "tsc",
@@ -25,6 +25,6 @@
     "pulumi": {
         "resource": true,
         "name": "symbiosis",
-        "server": "github://api.github.com/kuraudo-io"
+        "server": "github://api.github.com/symbiosis-cloud"
     }
 }

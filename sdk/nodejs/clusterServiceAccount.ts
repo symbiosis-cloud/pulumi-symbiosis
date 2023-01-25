@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as symbiosis from "@kuraudo-io/symbiosis";
+ * import * as symbiosis from "@symbiosis-cloud/symbiosis-pulumi";
  *
  * const example = new symbiosis.ClusterServiceAccount("example", {clusterName: symbiosis_cluster.example.name});
  * ```

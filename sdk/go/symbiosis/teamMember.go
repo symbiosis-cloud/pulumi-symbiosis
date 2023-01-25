@@ -20,8 +20,8 @@ import (
 //
 // import (
 //
-//	"github.com/kuraudo-io/pulumi-symbiosis/sdk/go/symbiosis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/symbiosis-cloud/pulumi-symbiosis/sdk/go/symbiosis"
 //
 // )
 //

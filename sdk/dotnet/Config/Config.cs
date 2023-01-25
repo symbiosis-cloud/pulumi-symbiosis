@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Kuraudo.Symbiosis
+namespace Symbiosis.Pulumi.Symbiosis
 {
     public static class Config
     {

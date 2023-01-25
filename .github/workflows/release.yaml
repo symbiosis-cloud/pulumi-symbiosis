@@ -31,6 +31,7 @@ env:
   PYPI_USERNAME: "__token__"
   PYPI_REPOSITORY_URL: ""
   PUBLISH_PYPI: true
+
 jobs:
   publish_binary:
     name: publish

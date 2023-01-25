@@ -2,9 +2,9 @@ PROJECT_NAME := symbiosis Package
 
 SHELL            := /usr/bin/bash
 PACK             := symbiosis
-ORG              := kuraudo-io
+ORG              := symbiosis-cloud
 PROJECT          := github.com/${ORG}/pulumi-${PACK}
-NODE_MODULE_NAME := @kuraudo-io/${PACK}
+NODE_MODULE_NAME := @symbiosis-cloud/${PACK}
 TF_NAME          := ${PACK}
 PROVIDER_PATH    := provider
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version

@@ -8,26 +8,30 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace Kuraudo.Symbiosis.Inputs
+namespace Symbiosis.Pulumi.Symbiosis.Outputs
 {
 
-    public sealed class NodePoolTaintArgs : global::Pulumi.ResourceArgs
+    [OutputType]
+    public sealed class NodePoolTaint
     {
         /// <summary>
         /// Taint effect. Can be either NoSchedule, PreferNoSchedule or NoExecute. See: https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
         /// </summary>
-        [Input("effect", required: true)]
-        public Input<string> Effect { get; set; } = null!;
+        public readonly string Effect;
+        public readonly string Key;
+        public readonly string Value;
 
-        [Input("key", required: true)]
-        public Input<string> Key { get; set; } = null!;
+        [OutputConstructor]
+        private NodePoolTaint(
+            string effect,
 
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+            string key,
 
-        public NodePoolTaintArgs()
+            string value)
         {
+            Effect = effect;
+            Key = key;
+            Value = value;
         }
-        public static new NodePoolTaintArgs Empty => new NodePoolTaintArgs();
     }
 }

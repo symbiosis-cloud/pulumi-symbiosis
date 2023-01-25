@@ -1,7 +1,7 @@
 ARG UBUNTU_VERSION=latest
 FROM ubuntu:${UBUNTU_VERSION}
 
-RUN useradd -ms /bin/bash hayden -u 1000
+RUN useradd -ms /bin/bash build -u 1000
 
 # Update apt-get and install various needed utilities
 RUN apt-get update && \
@@ -22,13 +22,13 @@ RUN rm -rf /usr/local/go && \
     tar -C /usr/local -xzf ${GO_VERSION}.tar.gz && \
     rm ${GO_VERSION}.tar.gz 
 
-ENV GOPATH=/home/hayden/go
+ENV GOPATH=/home/build/go
 ENV PATH=$PATH:/usr/local/go/bin
 
 # Install go linter
 RUN mkdir -p $GOPATH/bin && \
     curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $GOPATH/bin v1.46.2 && \
-    chown -R hayden:hayden $GOPATH
+    chown -R build:build $GOPATH
 
 ENV PATH=$PATH:$GOPATH/bin
 
@@ -63,7 +63,7 @@ RUN apt-get update && \
     apt-get install -y dotnet-sdk-6.0
 
 # Install Pulumi
-RUN curl -fsSL https://get.pulumi.com | sh && mv /root/.pulumi /home/hayden/ && chown -R hayden:hayden /home/hayden/.pulumi
-ENV PATH=$PATH:/home/hayden/.pulumi/bin
+RUN curl -fsSL https://get.pulumi.com | sh && mv /root/.pulumi /home/build/ && chown -R build:build /home/build/.pulumi
+ENV PATH=$PATH:/home/build/.pulumi/bin
 
-USER hayden
+USER build

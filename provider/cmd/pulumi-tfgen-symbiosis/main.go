@@ -15,8 +15,8 @@
 package main
 
 import (
-	symbiosis "github.com/kuraudo-io/pulumi-symbiosis/provider"
-	"github.com/kuraudo-io/pulumi-symbiosis/provider/pkg/version"
+	symbiosis "github.com/symbiosis-cloud/pulumi-symbiosis/provider"
+	"github.com/symbiosis-cloud/pulumi-symbiosis/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 )
 

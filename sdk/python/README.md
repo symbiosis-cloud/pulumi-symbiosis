@@ -11,13 +11,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @kuraudo-io/symbiosis
+npm install @symbiosis-cloud/symbiosis
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @kuraudo-io/symbiosis
+yarn add @symbiosis-cloud/symbiosis
 ```
 
 ### Python
@@ -25,7 +25,7 @@ yarn add @kuraudo-io/symbiosis
 To use from Python, install using `pip`:
 
 ```bash
-pip install kuraudo_symbiosis
+pip install symbiosis_pulumi
 ```
 
 ### Go
@@ -33,7 +33,7 @@ pip install kuraudo_symbiosis
 To use from Go, use `go get` to grab the latest version of the library:
 
 ```bash
-go get github.com/kuraudo-io/symbiosis/sdk/go/...
+go get github.com/symbiosis-cloud/pulumi-symbiosis/sdk/go/...
 ```
 
 ### .NET
@@ -41,7 +41,7 @@ go get github.com/kuraudo-io/symbiosis/sdk/go/...
 To use from .NET, install using `dotnet add package`:
 
 ```bash
-dotnet add package Kuraudo.Symbiosis
+dotnet add package Symbiosis.SymbiosisPulumi
 ```
 
 ## Configuration

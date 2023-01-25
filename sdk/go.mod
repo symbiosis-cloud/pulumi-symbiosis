@@ -1,4 +1,4 @@
-module github.com/kuraudo-io/pulumi-symbiosis/sdk
+module github.com/symbiosis-cloud/pulumi-symbiosis/sdk
 
 go 1.19
 

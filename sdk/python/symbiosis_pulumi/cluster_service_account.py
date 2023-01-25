@@ -104,7 +104,7 @@ class ClusterServiceAccount(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import kuraudo_symbiosis as symbiosis
+        import symbiosis_pulumi as symbiosis
 
         example = symbiosis.ClusterServiceAccount("example", cluster_name=symbiosis_cluster["example"]["name"])
         ```
@@ -126,7 +126,7 @@ class ClusterServiceAccount(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import kuraudo_symbiosis as symbiosis
+        import symbiosis_pulumi as symbiosis
 
         example = symbiosis.ClusterServiceAccount("example", cluster_name=symbiosis_cluster["example"]["name"])
         ```

@@ -18,7 +18,7 @@ builds:
       - linux
     ldflags:
       # The line below MUST align with the module in current provider/go.mod
-      - -X github.com/kuraudo-io/pulumi-symbiosis/provider/pkg/version.Version={{.Tag }}
+      - -X github.com/symbiosis-cloud/pulumi-symbiosis/provider/pkg/version.Version={{.Tag }}
     main: ./cmd/pulumi-resource-symbiosis/
 changelog:
   skip: true

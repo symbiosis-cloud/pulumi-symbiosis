@@ -18,7 +18,7 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/kuraudo-io/pulumi-symbiosis/provider/pkg/version"
+	"github.com/symbiosis-cloud/pulumi-symbiosis/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -61,7 +61,7 @@ func Provider() tfbridge.ProviderInfo {
 		// Change this to your personal name (or a company name) that you
 		// would like to be shown in the Pulumi Registry if this package is published
 		// there.
-		Publisher: "Kuraudo.io",
+		Publisher: "Symbiosis",
 
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
@@ -73,7 +73,7 @@ func Provider() tfbridge.ProviderInfo {
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
-    PluginDownloadURL: "github://api.github.com/kuraudo-io",
+        PluginDownloadURL: "github://api.github.com/symbiosis-cloud",
 
 		Description:       "A Pulumi package for creating and managing symbiosis cloud resources.",
 
@@ -86,7 +86,7 @@ func Provider() tfbridge.ProviderInfo {
 
 		Homepage:   "https://www.pulumi.com",
 
-		Repository: "https://github.com/kuraudo-io/pulumi-symbiosis",
+		Repository: "https://github.com/symbiosis-cloud/pulumi-symbiosis",
 
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
@@ -127,12 +127,12 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
-      PackageName: "@kuraudo-io/symbiosis",
+            PackageName: "@symbiosis-cloud/symbiosis-pulumi",
 		},
 
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges
-      PackageName: "kuraudo_symbiosis",
+            PackageName: "symbiosis_pulumi",
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
 			},
@@ -140,7 +140,7 @@ func Provider() tfbridge.ProviderInfo {
 
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
-				fmt.Sprintf("github.com/kuraudo-io/pulumi-%[1]s/sdk/", mainPkg),
+				fmt.Sprintf("github.com/symbiosis-cloud/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				mainPkg,
@@ -149,7 +149,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 
 		CSharp: &tfbridge.CSharpInfo{
-			RootNamespace: "Kuraudo",
+			RootNamespace: "Symbiosis.Pulumi",
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},

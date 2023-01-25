@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace Kuraudo.Symbiosis
+namespace Symbiosis.Pulumi.Symbiosis
 {
     /// <summary>
     /// Manages Kubernetes clusters service accounts.
@@ -18,7 +18,7 @@ namespace Kuraudo.Symbiosis
     /// ```csharp
     /// using System.Collections.Generic;
     /// using Pulumi;
-    /// using Symbiosis = Kuraudo.Symbiosis;
+    /// using Symbiosis = Symbiosis.Pulumi.Symbiosis;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -74,7 +74,7 @@ namespace Kuraudo.Symbiosis
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "github://api.github.com/kuraudo-io",
+                PluginDownloadURL = "github://api.github.com/symbiosis-cloud",
                 AdditionalSecretOutputs =
                 {
                     "clusterCaCertificate",

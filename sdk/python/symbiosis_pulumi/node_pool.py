@@ -237,7 +237,7 @@ class NodePool(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import kuraudo_symbiosis as symbiosis
+        import symbiosis_pulumi as symbiosis
 
         example_cluster = symbiosis.Cluster("exampleCluster", region="germany-1")
         example_node_pool = symbiosis.NodePool("exampleNodePool",
@@ -268,7 +268,7 @@ class NodePool(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import kuraudo_symbiosis as symbiosis
+        import symbiosis_pulumi as symbiosis
 
         example_cluster = symbiosis.Cluster("exampleCluster", region="germany-1")
         example_node_pool = symbiosis.NodePool("exampleNodePool",

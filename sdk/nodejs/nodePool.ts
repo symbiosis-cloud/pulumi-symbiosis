@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as symbiosis from "@kuraudo-io/symbiosis";
+ * import * as symbiosis from "@symbiosis-cloud/symbiosis-pulumi";
  *
  * const exampleCluster = new symbiosis.Cluster("exampleCluster", {region: "germany-1"});
  * const exampleNodePool = new symbiosis.NodePool("exampleNodePool", {

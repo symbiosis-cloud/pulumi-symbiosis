@@ -15,7 +15,7 @@ class InstallPluginCommand(install):
     def run(self):
         install.run(self)
         try:
-            check_call(['pulumi', 'plugin', 'install', 'resource', 'symbiosis', PLUGIN_VERSION, '--server', 'github://api.github.com/kuraudo-io'])
+            check_call(['pulumi', 'plugin', 'install', 'resource', 'symbiosis', PLUGIN_VERSION, '--server', 'github://api.github.com/symbiosis-cloud'])
         except OSError as error:
             if error.errno == errno.ENOENT:
                 print(f"""
@@ -37,7 +37,7 @@ def readme():
         return "symbiosis Pulumi Package - Development Version"
 
 
-setup(name='kuraudo_symbiosis',
+setup(name='symbiosis_pulumi',
       version=VERSION,
       description="A Pulumi package for creating and managing symbiosis cloud resources.",
       long_description=readme(),
@@ -48,12 +48,12 @@ setup(name='kuraudo_symbiosis',
       keywords='pulumi symbiosis category/cloud',
       url='https://www.pulumi.com',
       project_urls={
-          'Repository': 'https://github.com/kuraudo-io/pulumi-symbiosis'
+          'Repository': 'https://github.com/symbiosis-cloud/pulumi-symbiosis'
       },
       license='Apache-2.0',
       packages=find_packages(),
       package_data={
-          'kuraudo_symbiosis': [
+          'symbiosis_pulumi': [
               'py.typed',
               'pulumi-plugin.json',
           ]

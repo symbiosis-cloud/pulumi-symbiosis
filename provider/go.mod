@@ -1,4 +1,4 @@
-module github.com/kuraudo-io/pulumi-symbiosis/provider
+module github.com/symbiosis-cloud/pulumi-symbiosis/provider
 
 go 1.19
 

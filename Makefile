@@ -1,6 +1,6 @@
 PROJECT_NAME := symbiosis Package
 
-SHELL            := /usr/bin/bash
+SHELL            := $(shell which bash)
 PACK             := symbiosis
 ORG              := symbiosis-cloud
 PROJECT          := github.com/${ORG}/pulumi-${PACK}

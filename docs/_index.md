@@ -37,7 +37,7 @@ db = symbiosis.Cluster("example",
 
 ```go
 import (
-	"github.com/symbiosis/pulumi-symbiosis/sdk/go/symbiosis"
+	"github.com/symbiosis-cloud/pulumi-symbiosis/sdk/go/symbiosis"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,7 +59,7 @@ func main() {
 
 ```csharp
 using Pulumi;
-using Symbiosis.Symbiosis;
+using Symbiosis.Pulumi.Symbiosis;
 
 class ExampleCluster : Stack
 {

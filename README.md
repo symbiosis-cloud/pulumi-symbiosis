@@ -11,13 +11,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @symbiosis-cloud/symbiosis
+npm install @symbiosis-cloud/symbiosis-pulumi
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @symbiosis-cloud/symbiosis
+yarn add @symbiosis-cloud/symbiosis-pulumi
 ```
 
 ### Python
@@ -25,7 +25,7 @@ yarn add @symbiosis-cloud/symbiosis
 To use from Python, install using `pip`:
 
 ```bash
-pip install symbiosis_pulumi
+pip install symbiosis-pulumi
 ```
 
 ### Go
@@ -41,7 +41,7 @@ go get github.com/symbiosis-cloud/pulumi-symbiosis/sdk/go/...
 To use from .NET, install using `dotnet add package`:
 
 ```bash
-dotnet add package Symbiosis.SymbiosisPulumi
+dotnet add package Symbiosis.Pulumi.Symbiosis
 ```
 
 ## Configuration

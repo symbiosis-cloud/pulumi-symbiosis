@@ -14,7 +14,7 @@ The Symbiosis provider must be configured with credentials to deploy and update 
 
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
-import * as symbiosis from "@symbiosis/symbiosis-pulumi";
+import * as symbiosis from "@symbiosis-cloud/symbiosis-pulumi";
 
 const mysite = new symbiosis.Cluster("example", {
     region: "germany-1"

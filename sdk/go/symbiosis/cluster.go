@@ -49,6 +49,8 @@ type Cluster struct {
 	IsHighlyAvailable pulumi.BoolPtrOutput `pulumi:"isHighlyAvailable"`
 	// Kubernetes version, see symbiosis.host for valid values or "latest" for the most recent supported version.
 	KubeVersion pulumi.StringPtrOutput `pulumi:"kubeVersion"`
+	// The raw kubeconfig file.
+	Kubeconfig pulumi.StringOutput `pulumi:"kubeconfig"`
 	// Cluster name. Changing the name forces re-creation.
 	Name       pulumi.StringOutput `pulumi:"name"`
 	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
@@ -68,6 +70,7 @@ func NewCluster(ctx *pulumi.Context,
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"caCertificate",
 		"certificate",
+		"kubeconfig",
 		"privateKey",
 	})
 	opts = append(opts, secrets)
@@ -102,6 +105,8 @@ type clusterState struct {
 	IsHighlyAvailable *bool `pulumi:"isHighlyAvailable"`
 	// Kubernetes version, see symbiosis.host for valid values or "latest" for the most recent supported version.
 	KubeVersion *string `pulumi:"kubeVersion"`
+	// The raw kubeconfig file.
+	Kubeconfig *string `pulumi:"kubeconfig"`
 	// Cluster name. Changing the name forces re-creation.
 	Name       *string `pulumi:"name"`
 	PrivateKey *string `pulumi:"privateKey"`
@@ -117,6 +122,8 @@ type ClusterState struct {
 	IsHighlyAvailable pulumi.BoolPtrInput
 	// Kubernetes version, see symbiosis.host for valid values or "latest" for the most recent supported version.
 	KubeVersion pulumi.StringPtrInput
+	// The raw kubeconfig file.
+	Kubeconfig pulumi.StringPtrInput
 	// Cluster name. Changing the name forces re-creation.
 	Name       pulumi.StringPtrInput
 	PrivateKey pulumi.StringPtrInput
@@ -256,6 +263,11 @@ func (o ClusterOutput) IsHighlyAvailable() pulumi.BoolPtrOutput {
 // Kubernetes version, see symbiosis.host for valid values or "latest" for the most recent supported version.
 func (o ClusterOutput) KubeVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.KubeVersion }).(pulumi.StringPtrOutput)
+}
+
+// The raw kubeconfig file.
+func (o ClusterOutput) Kubeconfig() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Kubeconfig }).(pulumi.StringOutput)
 }
 
 // Cluster name. Changing the name forces re-creation.

@@ -19,6 +19,7 @@ class NodePoolArgs:
                  cluster: pulumi.Input[str],
                  node_type: pulumi.Input[str],
                  quantity: pulumi.Input[int],
+                 autoscaling: Optional[pulumi.Input['NodePoolAutoscalingArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]]] = None):
@@ -34,6 +35,8 @@ class NodePoolArgs:
         pulumi.set(__self__, "cluster", cluster)
         pulumi.set(__self__, "node_type", node_type)
         pulumi.set(__self__, "quantity", quantity)
+        if autoscaling is not None:
+            pulumi.set(__self__, "autoscaling", autoscaling)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -79,6 +82,15 @@ class NodePoolArgs:
 
     @property
     @pulumi.getter
+    def autoscaling(self) -> Optional[pulumi.Input['NodePoolAutoscalingArgs']]:
+        return pulumi.get(self, "autoscaling")
+
+    @autoscaling.setter
+    def autoscaling(self, value: Optional[pulumi.Input['NodePoolAutoscalingArgs']]):
+        pulumi.set(self, "autoscaling", value)
+
+    @property
+    @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Node labels to be applied to the nodes
@@ -117,6 +129,7 @@ class NodePoolArgs:
 @pulumi.input_type
 class _NodePoolState:
     def __init__(__self__, *,
+                 autoscaling: Optional[pulumi.Input['NodePoolAutoscalingArgs']] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -132,6 +145,8 @@ class _NodePoolState:
         :param pulumi.Input[int] quantity: Desired number of nodes for specific pool.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: Node taints to be applied to the nodes
         """
+        if autoscaling is not None:
+            pulumi.set(__self__, "autoscaling", autoscaling)
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
         if labels is not None:
@@ -144,6 +159,15 @@ class _NodePoolState:
             pulumi.set(__self__, "quantity", quantity)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+
+    @property
+    @pulumi.getter
+    def autoscaling(self) -> Optional[pulumi.Input['NodePoolAutoscalingArgs']]:
+        return pulumi.get(self, "autoscaling")
+
+    @autoscaling.setter
+    def autoscaling(self, value: Optional[pulumi.Input['NodePoolAutoscalingArgs']]):
+        pulumi.set(self, "autoscaling", value)
 
     @property
     @pulumi.getter
@@ -223,6 +247,7 @@ class NodePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaling: Optional[pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -292,6 +317,7 @@ class NodePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaling: Optional[pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -307,6 +333,7 @@ class NodePool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NodePoolArgs.__new__(NodePoolArgs)
 
+            __props__.__dict__["autoscaling"] = autoscaling
             if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
             __props__.__dict__["cluster"] = cluster
@@ -329,6 +356,7 @@ class NodePool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            autoscaling: Optional[pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']]] = None,
             cluster: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -353,6 +381,7 @@ class NodePool(pulumi.CustomResource):
 
         __props__ = _NodePoolState.__new__(_NodePoolState)
 
+        __props__.__dict__["autoscaling"] = autoscaling
         __props__.__dict__["cluster"] = cluster
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
@@ -360,6 +389,11 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["quantity"] = quantity
         __props__.__dict__["taints"] = taints
         return NodePool(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def autoscaling(self) -> pulumi.Output[Optional['outputs.NodePoolAutoscaling']]:
+        return pulumi.get(self, "autoscaling")
 
     @property
     @pulumi.getter

@@ -49,6 +49,7 @@ import (
 type NodePool struct {
 	pulumi.CustomResourceState
 
+	Autoscaling NodePoolAutoscalingPtrOutput `pulumi:"autoscaling"`
 	// Name of cluster to create node pool in.
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// Node labels to be applied to the nodes
@@ -102,6 +103,7 @@ func GetNodePool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodePool resources.
 type nodePoolState struct {
+	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
 	// Name of cluster to create node pool in.
 	Cluster *string `pulumi:"cluster"`
 	// Node labels to be applied to the nodes
@@ -117,6 +119,7 @@ type nodePoolState struct {
 }
 
 type NodePoolState struct {
+	Autoscaling NodePoolAutoscalingPtrInput
 	// Name of cluster to create node pool in.
 	Cluster pulumi.StringPtrInput
 	// Node labels to be applied to the nodes
@@ -136,6 +139,7 @@ func (NodePoolState) ElementType() reflect.Type {
 }
 
 type nodePoolArgs struct {
+	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
 	// Name of cluster to create node pool in.
 	Cluster string `pulumi:"cluster"`
 	// Node labels to be applied to the nodes
@@ -152,6 +156,7 @@ type nodePoolArgs struct {
 
 // The set of arguments for constructing a NodePool resource.
 type NodePoolArgs struct {
+	Autoscaling NodePoolAutoscalingPtrInput
 	// Name of cluster to create node pool in.
 	Cluster pulumi.StringInput
 	// Node labels to be applied to the nodes
@@ -251,6 +256,10 @@ func (o NodePoolOutput) ToNodePoolOutput() NodePoolOutput {
 
 func (o NodePoolOutput) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutput {
 	return o
+}
+
+func (o NodePoolOutput) Autoscaling() NodePoolAutoscalingPtrOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolAutoscalingPtrOutput { return v.Autoscaling }).(NodePoolAutoscalingPtrOutput)
 }
 
 // Name of cluster to create node pool in.

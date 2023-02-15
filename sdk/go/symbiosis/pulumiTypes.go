@@ -10,6 +10,169 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type NodePoolAutoscaling struct {
+	Enabled bool `pulumi:"enabled"`
+	MaxSize int  `pulumi:"maxSize"`
+	MinSize int  `pulumi:"minSize"`
+}
+
+// NodePoolAutoscalingInput is an input type that accepts NodePoolAutoscalingArgs and NodePoolAutoscalingOutput values.
+// You can construct a concrete instance of `NodePoolAutoscalingInput` via:
+//
+//	NodePoolAutoscalingArgs{...}
+type NodePoolAutoscalingInput interface {
+	pulumi.Input
+
+	ToNodePoolAutoscalingOutput() NodePoolAutoscalingOutput
+	ToNodePoolAutoscalingOutputWithContext(context.Context) NodePoolAutoscalingOutput
+}
+
+type NodePoolAutoscalingArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	MaxSize pulumi.IntInput  `pulumi:"maxSize"`
+	MinSize pulumi.IntInput  `pulumi:"minSize"`
+}
+
+func (NodePoolAutoscalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolAutoscaling)(nil)).Elem()
+}
+
+func (i NodePoolAutoscalingArgs) ToNodePoolAutoscalingOutput() NodePoolAutoscalingOutput {
+	return i.ToNodePoolAutoscalingOutputWithContext(context.Background())
+}
+
+func (i NodePoolAutoscalingArgs) ToNodePoolAutoscalingOutputWithContext(ctx context.Context) NodePoolAutoscalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolAutoscalingOutput)
+}
+
+func (i NodePoolAutoscalingArgs) ToNodePoolAutoscalingPtrOutput() NodePoolAutoscalingPtrOutput {
+	return i.ToNodePoolAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolAutoscalingArgs) ToNodePoolAutoscalingPtrOutputWithContext(ctx context.Context) NodePoolAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolAutoscalingOutput).ToNodePoolAutoscalingPtrOutputWithContext(ctx)
+}
+
+// NodePoolAutoscalingPtrInput is an input type that accepts NodePoolAutoscalingArgs, NodePoolAutoscalingPtr and NodePoolAutoscalingPtrOutput values.
+// You can construct a concrete instance of `NodePoolAutoscalingPtrInput` via:
+//
+//	        NodePoolAutoscalingArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolAutoscalingPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolAutoscalingPtrOutput() NodePoolAutoscalingPtrOutput
+	ToNodePoolAutoscalingPtrOutputWithContext(context.Context) NodePoolAutoscalingPtrOutput
+}
+
+type nodePoolAutoscalingPtrType NodePoolAutoscalingArgs
+
+func NodePoolAutoscalingPtr(v *NodePoolAutoscalingArgs) NodePoolAutoscalingPtrInput {
+	return (*nodePoolAutoscalingPtrType)(v)
+}
+
+func (*nodePoolAutoscalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolAutoscaling)(nil)).Elem()
+}
+
+func (i *nodePoolAutoscalingPtrType) ToNodePoolAutoscalingPtrOutput() NodePoolAutoscalingPtrOutput {
+	return i.ToNodePoolAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolAutoscalingPtrType) ToNodePoolAutoscalingPtrOutputWithContext(ctx context.Context) NodePoolAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolAutoscalingPtrOutput)
+}
+
+type NodePoolAutoscalingOutput struct{ *pulumi.OutputState }
+
+func (NodePoolAutoscalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolAutoscaling)(nil)).Elem()
+}
+
+func (o NodePoolAutoscalingOutput) ToNodePoolAutoscalingOutput() NodePoolAutoscalingOutput {
+	return o
+}
+
+func (o NodePoolAutoscalingOutput) ToNodePoolAutoscalingOutputWithContext(ctx context.Context) NodePoolAutoscalingOutput {
+	return o
+}
+
+func (o NodePoolAutoscalingOutput) ToNodePoolAutoscalingPtrOutput() NodePoolAutoscalingPtrOutput {
+	return o.ToNodePoolAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolAutoscalingOutput) ToNodePoolAutoscalingPtrOutputWithContext(ctx context.Context) NodePoolAutoscalingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolAutoscaling) *NodePoolAutoscaling {
+		return &v
+	}).(NodePoolAutoscalingPtrOutput)
+}
+
+func (o NodePoolAutoscalingOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodePoolAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o NodePoolAutoscalingOutput) MaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v NodePoolAutoscaling) int { return v.MaxSize }).(pulumi.IntOutput)
+}
+
+func (o NodePoolAutoscalingOutput) MinSize() pulumi.IntOutput {
+	return o.ApplyT(func(v NodePoolAutoscaling) int { return v.MinSize }).(pulumi.IntOutput)
+}
+
+type NodePoolAutoscalingPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolAutoscalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolAutoscaling)(nil)).Elem()
+}
+
+func (o NodePoolAutoscalingPtrOutput) ToNodePoolAutoscalingPtrOutput() NodePoolAutoscalingPtrOutput {
+	return o
+}
+
+func (o NodePoolAutoscalingPtrOutput) ToNodePoolAutoscalingPtrOutputWithContext(ctx context.Context) NodePoolAutoscalingPtrOutput {
+	return o
+}
+
+func (o NodePoolAutoscalingPtrOutput) Elem() NodePoolAutoscalingOutput {
+	return o.ApplyT(func(v *NodePoolAutoscaling) NodePoolAutoscaling {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolAutoscaling
+		return ret
+	}).(NodePoolAutoscalingOutput)
+}
+
+func (o NodePoolAutoscalingPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolAutoscaling) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o NodePoolAutoscalingPtrOutput) MaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o NodePoolAutoscalingPtrOutput) MinSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinSize
+	}).(pulumi.IntPtrOutput)
+}
+
 type NodePoolTaint struct {
 	// Taint effect. Can be either NoSchedule, PreferNoSchedule or NoExecute. See: https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
 	Effect string `pulumi:"effect"`
@@ -120,8 +283,12 @@ func (o NodePoolTaintArrayOutput) Index(i pulumi.IntInput) NodePoolTaintOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingInput)(nil)).Elem(), NodePoolAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingPtrInput)(nil)).Elem(), NodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTaintInput)(nil)).Elem(), NodePoolTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTaintArrayInput)(nil)).Elem(), NodePoolTaintArray{})
+	pulumi.RegisterOutputType(NodePoolAutoscalingOutput{})
+	pulumi.RegisterOutputType(NodePoolAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolTaintOutput{})
 	pulumi.RegisterOutputType(NodePoolTaintArrayOutput{})
 }

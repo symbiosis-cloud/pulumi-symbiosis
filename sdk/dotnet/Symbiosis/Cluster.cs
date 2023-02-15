@@ -58,6 +58,12 @@ namespace Symbiosis.Pulumi.Symbiosis
         public Output<string?> KubeVersion { get; private set; } = null!;
 
         /// <summary>
+        /// The raw kubeconfig file.
+        /// </summary>
+        [Output("kubeconfig")]
+        public Output<string> Kubeconfig { get; private set; } = null!;
+
+        /// <summary>
         /// Cluster name. Changing the name forces re-creation.
         /// </summary>
         [Output("name")]
@@ -97,6 +103,7 @@ namespace Symbiosis.Pulumi.Symbiosis
                 {
                     "caCertificate",
                     "certificate",
+                    "kubeconfig",
                     "privateKey",
                 },
             };
@@ -192,6 +199,22 @@ namespace Symbiosis.Pulumi.Symbiosis
         /// </summary>
         [Input("kubeVersion")]
         public Input<string>? KubeVersion { get; set; }
+
+        [Input("kubeconfig")]
+        private Input<string>? _kubeconfig;
+
+        /// <summary>
+        /// The raw kubeconfig file.
+        /// </summary>
+        public Input<string>? Kubeconfig
+        {
+            get => _kubeconfig;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _kubeconfig = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Cluster name. Changing the name forces re-creation.

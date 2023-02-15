@@ -51,6 +51,7 @@ export class NodePool extends pulumi.CustomResource {
         return obj['__pulumiType'] === NodePool.__pulumiType;
     }
 
+    public readonly autoscaling!: pulumi.Output<outputs.NodePoolAutoscaling | undefined>;
     /**
      * Name of cluster to create node pool in.
      */
@@ -89,6 +90,7 @@ export class NodePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodePoolState | undefined;
+            resourceInputs["autoscaling"] = state ? state.autoscaling : undefined;
             resourceInputs["cluster"] = state ? state.cluster : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -106,6 +108,7 @@ export class NodePool extends pulumi.CustomResource {
             if ((!args || args.quantity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'quantity'");
             }
+            resourceInputs["autoscaling"] = args ? args.autoscaling : undefined;
             resourceInputs["cluster"] = args ? args.cluster : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -122,6 +125,7 @@ export class NodePool extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NodePool resources.
  */
 export interface NodePoolState {
+    autoscaling?: pulumi.Input<inputs.NodePoolAutoscaling>;
     /**
      * Name of cluster to create node pool in.
      */
@@ -152,6 +156,7 @@ export interface NodePoolState {
  * The set of arguments for constructing a NodePool resource.
  */
 export interface NodePoolArgs {
+    autoscaling?: pulumi.Input<inputs.NodePoolAutoscaling>;
     /**
      * Name of cluster to create node pool in.
      */

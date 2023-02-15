@@ -59,6 +59,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly kubeVersion!: pulumi.Output<string | undefined>;
     /**
+     * The raw kubeconfig file.
+     */
+    public /*out*/ readonly kubeconfig!: pulumi.Output<string>;
+    /**
      * Cluster name. Changing the name forces re-creation.
      */
     public readonly name!: pulumi.Output<string>;
@@ -83,6 +87,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["isHighlyAvailable"] = state ? state.isHighlyAvailable : undefined;
             resourceInputs["kubeVersion"] = state ? state.kubeVersion : undefined;
+            resourceInputs["kubeconfig"] = state ? state.kubeconfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["privateKey"] = state ? state.privateKey : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
@@ -98,10 +103,11 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["caCertificate"] = undefined /*out*/;
             resourceInputs["certificate"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
+            resourceInputs["kubeconfig"] = undefined /*out*/;
             resourceInputs["privateKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["caCertificate", "certificate", "privateKey"] };
+        const secretOpts = { additionalSecretOutputs: ["caCertificate", "certificate", "kubeconfig", "privateKey"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
@@ -125,6 +131,10 @@ export interface ClusterState {
      * Kubernetes version, see symbiosis.host for valid values or "latest" for the most recent supported version.
      */
     kubeVersion?: pulumi.Input<string>;
+    /**
+     * The raw kubeconfig file.
+     */
+    kubeconfig?: pulumi.Input<string>;
     /**
      * Cluster name. Changing the name forces re-creation.
      */

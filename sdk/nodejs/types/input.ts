@@ -6,6 +6,12 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+export interface NodePoolAutoscaling {
+    enabled: pulumi.Input<boolean>;
+    maxSize: pulumi.Input<number>;
+    minSize: pulumi.Input<number>;
+}
+
 export interface NodePoolTaint {
     /**
      * Taint effect. Can be either NoSchedule, PreferNoSchedule or NoExecute. See: https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/

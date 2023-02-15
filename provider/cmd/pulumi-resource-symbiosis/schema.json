@@ -71,6 +71,40 @@
         ]
     },
     "types": {
+        "symbiosis:index/NodePoolAutoscaling:NodePoolAutoscaling": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxSize": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minSize": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "maxSize",
+                "minSize"
+            ]
+        },
         "symbiosis:index/NodePoolTaint:NodePoolTaint": {
             "properties": {
                 "effect": {
@@ -162,6 +196,11 @@
                     "type": "string",
                     "description": "Kubernetes version, see symbiosis.host for valid values or \"latest\" for the most recent supported version.\n"
                 },
+                "kubeconfig": {
+                    "type": "string",
+                    "description": "The raw kubeconfig file.\n",
+                    "secret": true
+                },
                 "name": {
                     "type": "string",
                     "description": "Cluster name. Changing the name forces re-creation.\n"
@@ -178,6 +217,7 @@
                 "caCertificate",
                 "certificate",
                 "endpoint",
+                "kubeconfig",
                 "name",
                 "privateKey",
                 "region"
@@ -230,6 +270,11 @@
                         "type": "string",
                         "description": "Kubernetes version, see symbiosis.host for valid values or \"latest\" for the most recent supported version.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "kubeconfig": {
+                        "type": "string",
+                        "description": "The raw kubeconfig file.\n",
+                        "secret": true
                     },
                     "name": {
                         "type": "string",
@@ -306,6 +351,9 @@
         "symbiosis:index/nodePool:NodePool": {
             "description": "Creates node pools for Kubernetes clusters in Symbiosis.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as symbiosis from \"@symbiosis-cloud/symbiosis-pulumi\";\n\nconst exampleCluster = new symbiosis.Cluster(\"exampleCluster\", {region: \"germany-1\"});\nconst exampleNodePool = new symbiosis.NodePool(\"exampleNodePool\", {\n    cluster: exampleCluster.name,\n    nodeType: \"general-1\",\n    quantity: 6,\n});\n```\n```python\nimport pulumi\nimport symbiosis_pulumi as symbiosis\n\nexample_cluster = symbiosis.Cluster(\"exampleCluster\", region=\"germany-1\")\nexample_node_pool = symbiosis.NodePool(\"exampleNodePool\",\n    cluster=example_cluster.name,\n    node_type=\"general-1\",\n    quantity=6)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Symbiosis = Symbiosis.Pulumi.Symbiosis;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleCluster = new Symbiosis.Cluster(\"exampleCluster\", new()\n    {\n        Region = \"germany-1\",\n    });\n\n    var exampleNodePool = new Symbiosis.NodePool(\"exampleNodePool\", new()\n    {\n        Cluster = exampleCluster.Name,\n        NodeType = \"general-1\",\n        Quantity = 6,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/symbiosis-cloud/pulumi-symbiosis/sdk/go/symbiosis\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleCluster, err := symbiosis.NewCluster(ctx, \"exampleCluster\", \u0026symbiosis.ClusterArgs{\n\t\t\tRegion: pulumi.String(\"germany-1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = symbiosis.NewNodePool(ctx, \"exampleNodePool\", \u0026symbiosis.NodePoolArgs{\n\t\t\tCluster:  exampleCluster.Name,\n\t\t\tNodeType: pulumi.String(\"general-1\"),\n\t\t\tQuantity: pulumi.Int(6),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.symbiosis.Cluster;\nimport com.pulumi.symbiosis.ClusterArgs;\nimport com.pulumi.symbiosis.NodePool;\nimport com.pulumi.symbiosis.NodePoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleCluster = new Cluster(\"exampleCluster\", ClusterArgs.builder()        \n            .region(\"germany-1\")\n            .build());\n\n        var exampleNodePool = new NodePool(\"exampleNodePool\", NodePoolArgs.builder()        \n            .cluster(exampleCluster.name())\n            .nodeType(\"general-1\")\n            .quantity(6)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleCluster:\n    type: symbiosis:Cluster\n    properties:\n      region: germany-1\n  exampleNodePool:\n    type: symbiosis:NodePool\n    properties:\n      cluster: ${exampleCluster.name}\n      nodeType: general-1\n      quantity: 6\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
+                "autoscaling": {
+                    "$ref": "#/types/symbiosis:index/NodePoolAutoscaling:NodePoolAutoscaling"
+                },
                 "cluster": {
                     "type": "string",
                     "description": "Name of cluster to create node pool in.\n"
@@ -344,6 +392,9 @@
                 "quantity"
             ],
             "inputProperties": {
+                "autoscaling": {
+                    "$ref": "#/types/symbiosis:index/NodePoolAutoscaling:NodePoolAutoscaling"
+                },
                 "cluster": {
                     "type": "string",
                     "description": "Name of cluster to create node pool in.\n",
@@ -388,6 +439,9 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering NodePool resources.\n",
                 "properties": {
+                    "autoscaling": {
+                        "$ref": "#/types/symbiosis:index/NodePoolAutoscaling:NodePoolAutoscaling"
+                    },
                     "cluster": {
                         "type": "string",
                         "description": "Name of cluster to create node pool in.\n",

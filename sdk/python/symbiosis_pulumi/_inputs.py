@@ -10,8 +10,47 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
+    'NodePoolAutoscalingArgs',
     'NodePoolTaintArgs',
 ]
+
+@pulumi.input_type
+class NodePoolAutoscalingArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 max_size: pulumi.Input[int],
+                 min_size: pulumi.Input[int]):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "max_size", max_size)
+        pulumi.set(__self__, "min_size", min_size)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="maxSize")
+    def max_size(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "max_size")
+
+    @max_size.setter
+    def max_size(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_size", value)
+
+    @property
+    @pulumi.getter(name="minSize")
+    def min_size(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "min_size")
+
+    @min_size.setter
+    def min_size(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min_size", value)
+
 
 @pulumi.input_type
 class NodePoolTaintArgs:

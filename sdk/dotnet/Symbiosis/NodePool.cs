@@ -40,6 +40,9 @@ namespace Symbiosis.Pulumi.Symbiosis
     [SymbiosisResourceType("symbiosis:index/nodePool:NodePool")]
     public partial class NodePool : global::Pulumi.CustomResource
     {
+        [Output("autoscaling")]
+        public Output<Outputs.NodePoolAutoscaling?> Autoscaling { get; private set; } = null!;
+
         /// <summary>
         /// Name of cluster to create node pool in.
         /// </summary>
@@ -123,6 +126,9 @@ namespace Symbiosis.Pulumi.Symbiosis
 
     public sealed class NodePoolArgs : global::Pulumi.ResourceArgs
     {
+        [Input("autoscaling")]
+        public Input<Inputs.NodePoolAutoscalingArgs>? Autoscaling { get; set; }
+
         /// <summary>
         /// Name of cluster to create node pool in.
         /// </summary>
@@ -179,6 +185,9 @@ namespace Symbiosis.Pulumi.Symbiosis
 
     public sealed class NodePoolState : global::Pulumi.ResourceArgs
     {
+        [Input("autoscaling")]
+        public Input<Inputs.NodePoolAutoscalingGetArgs>? Autoscaling { get; set; }
+
         /// <summary>
         /// Name of cluster to create node pool in.
         /// </summary>

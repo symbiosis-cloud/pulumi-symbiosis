@@ -86,6 +86,7 @@ class _ClusterState:
                  endpoint: Optional[pulumi.Input[str]] = None,
                  is_highly_available: Optional[pulumi.Input[bool]] = None,
                  kube_version: Optional[pulumi.Input[str]] = None,
+                 kubeconfig: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
@@ -94,6 +95,7 @@ class _ClusterState:
         :param pulumi.Input[str] endpoint: Cluster API server endpoint
         :param pulumi.Input[bool] is_highly_available: When set to true it will deploy a highly available control plane with multiple replicas for redundancy.
         :param pulumi.Input[str] kube_version: Kubernetes version, see symbiosis.host for valid values or "latest" for the most recent supported version.
+        :param pulumi.Input[str] kubeconfig: The raw kubeconfig file.
         :param pulumi.Input[str] name: Cluster name. Changing the name forces re-creation.
         """
         if ca_certificate is not None:
@@ -106,6 +108,8 @@ class _ClusterState:
             pulumi.set(__self__, "is_highly_available", is_highly_available)
         if kube_version is not None:
             pulumi.set(__self__, "kube_version", kube_version)
+        if kubeconfig is not None:
+            pulumi.set(__self__, "kubeconfig", kubeconfig)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if private_key is not None:
@@ -166,6 +170,18 @@ class _ClusterState:
     @kube_version.setter
     def kube_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kube_version", value)
+
+    @property
+    @pulumi.getter
+    def kubeconfig(self) -> Optional[pulumi.Input[str]]:
+        """
+        The raw kubeconfig file.
+        """
+        return pulumi.get(self, "kubeconfig")
+
+    @kubeconfig.setter
+    def kubeconfig(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kubeconfig", value)
 
     @property
     @pulumi.getter
@@ -281,8 +297,9 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["ca_certificate"] = None
             __props__.__dict__["certificate"] = None
             __props__.__dict__["endpoint"] = None
+            __props__.__dict__["kubeconfig"] = None
             __props__.__dict__["private_key"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["caCertificate", "certificate", "privateKey"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["caCertificate", "certificate", "kubeconfig", "privateKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Cluster, __self__).__init__(
             'symbiosis:index/cluster:Cluster',
@@ -299,6 +316,7 @@ class Cluster(pulumi.CustomResource):
             endpoint: Optional[pulumi.Input[str]] = None,
             is_highly_available: Optional[pulumi.Input[bool]] = None,
             kube_version: Optional[pulumi.Input[str]] = None,
+            kubeconfig: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             private_key: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None) -> 'Cluster':
@@ -312,6 +330,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] endpoint: Cluster API server endpoint
         :param pulumi.Input[bool] is_highly_available: When set to true it will deploy a highly available control plane with multiple replicas for redundancy.
         :param pulumi.Input[str] kube_version: Kubernetes version, see symbiosis.host for valid values or "latest" for the most recent supported version.
+        :param pulumi.Input[str] kubeconfig: The raw kubeconfig file.
         :param pulumi.Input[str] name: Cluster name. Changing the name forces re-creation.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -323,6 +342,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["is_highly_available"] = is_highly_available
         __props__.__dict__["kube_version"] = kube_version
+        __props__.__dict__["kubeconfig"] = kubeconfig
         __props__.__dict__["name"] = name
         __props__.__dict__["private_key"] = private_key
         __props__.__dict__["region"] = region
@@ -361,6 +381,14 @@ class Cluster(pulumi.CustomResource):
         Kubernetes version, see symbiosis.host for valid values or "latest" for the most recent supported version.
         """
         return pulumi.get(self, "kube_version")
+
+    @property
+    @pulumi.getter
+    def kubeconfig(self) -> pulumi.Output[str]:
+        """
+        The raw kubeconfig file.
+        """
+        return pulumi.get(self, "kubeconfig")
 
     @property
     @pulumi.getter

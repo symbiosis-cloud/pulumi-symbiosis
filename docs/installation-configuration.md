@@ -6,7 +6,7 @@ layout: installation
 
 ## Installation
 
-The Kuraudo.io Symbiosis provider is available as a package in all Pulumi languages:
+The Symbiosis provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@symbiosis-cloud/symbiosis-pulumi`](https://www.npmjs.com/package/@symbiosis-cloud/symbiosis-pulumi)
 * Python: [`symbiosis-pulumi`](https://pypi.org/project/symbiosis-pulumi/)
